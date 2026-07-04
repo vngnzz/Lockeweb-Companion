@@ -17,11 +17,11 @@
 
 <p align="center">
   <strong>Latest stable version / Última versión estable:</strong><br>
-  <code>v1.18.3 — HelloWorld Update ESP/ENG Public NPM Fix</code>
+  <code>v1.19.1 — ShowDown Update Ability Fix</code>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3">
+  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1">
     <strong>Download latest release / Descargar última versión</strong>
   </a>
 </p>
@@ -46,7 +46,7 @@ LockeWeb Companion es una webapp local pensada para usarse como **segunda pantal
 
 Lee información en directo desde mGBA mediante un script Lua y un pequeño bridge local en Node.js.
 
-La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el equipo, mochila, ficha de entrenador, medallas, cementerio y checklist de capturas.
+La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el equipo, mochila, ficha de entrenador, medallas, cementerio, checklist de capturas y una exportación automática en formato **Pokémon Showdown**.
 
 </details>
 
@@ -57,16 +57,32 @@ La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el 
 
 <br>
 
-**Última versión estable:** `v1.18.3 — HelloWorld Update ESP/ENG Public NPM Fix`
+**Última versión estable:** `v1.19.1 — ShowDown Update Ability Fix`
 
 **Descarga de la última versión:**
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
 ```
 
 Esta edición está pensada para que cualquier persona pueda usarla de forma sencilla:
 
+- pestaña `Showdown` integrada;
+- exportación del equipo actual en formato Pokémon Showdown;
+- texto Showdown actualizado en vivo con los datos leídos desde mGBA;
+- botón para copiar el texto Showdown;
+- botón para descargar el `.txt`;
+- lectura extendida de datos del Pokémon:
+  - objeto equipado;
+  - habilidad;
+  - naturaleza;
+  - IVs;
+  - EVs;
+  - experiencia;
+  - felicidad;
+  - PP bonuses;
+- corrección específica para habilidades en RandomLocke;
+- lectura de habilidad usando la ROM cargada cuando está disponible;
 - selector de idioma español/inglés integrado en la app;
 - un único archivo `.bat`;
 - instalación automática de dependencias internas si faltan;
@@ -106,10 +122,115 @@ LockeWeb lee automáticamente desde la memoria de mGBA:
 - stats;
 - ataques;
 - PP;
-- estado del Pokémon.
+- estado del Pokémon;
+- objeto equipado;
+- habilidad;
+- naturaleza;
+- IVs;
+- EVs;
+- experiencia;
+- felicidad;
+- PP bonuses.
 
 El **Equipo en directo** es solo de lectura.  
 No se edita manualmente desde la web.
+
+</details>
+
+<details>
+<summary><strong>Datos competitivos: IVs, EVs, naturaleza y habilidad</strong></summary>
+
+<br>
+
+Desde la v1.19, LockeWeb Companion amplía la lectura del Pokémon para preparar exportación compatible con Pokémon Showdown.
+
+La app muestra:
+
+```text
+Naturaleza
+Habilidad
+Objeto equipado
+EVs
+IVs
+```
+
+En la v1.19.1 se corrige especialmente la habilidad para RandomLocke.
+
+En una ROM normal, la habilidad suele poder resolverse con:
+
+```text
+especie + ranura de habilidad
+```
+
+Pero en una RandomLocke, el randomizer puede modificar la tabla interna de habilidades de la ROM.
+
+Por eso, LockeWeb intenta resolver la habilidad usando:
+
+```text
+Pokémon en memoria
+→ ability slot real
+→ tabla gBaseStats de la ROM cargada
+→ abilityId real
+→ nombre de habilidad
+```
+
+Si no puede resolver la habilidad real desde la ROM, evita inventar una habilidad incorrecta.
+
+</details>
+
+<details>
+<summary><strong>Pestaña Showdown</strong></summary>
+
+<br>
+
+La v1.19 añade una nueva pestaña:
+
+```text
+Showdown
+```
+
+Está situada junto a las secciones inferiores de la app, como la checklist, la caja/cementerio y backup.
+
+Dentro de la pestaña se genera automáticamente un texto compatible con el importador de Pokémon Showdown.
+
+El texto se actualiza en vivo con el equipo actual leído desde mGBA.
+
+La pestaña permite:
+
+- ver el equipo en formato Showdown;
+- copiar el texto directamente;
+- descargarlo como `.txt`;
+- pegarlo después en Pokémon Showdown.
+
+El formato exportado incluye, cuando está disponible:
+
+- especie;
+- mote;
+- objeto equipado;
+- habilidad;
+- nivel;
+- EVs;
+- naturaleza;
+- IVs;
+- movimientos.
+
+Ejemplo de formato:
+
+```text
+CHARLIE (Arcanine) @ Smoke Ball
+Ability: Intimidate
+Level: 25
+EVs: 12 HP / 8 Atk / 4 Def
+Adamant Nature
+IVs: 31 HP / 28 Atk / 30 Def / 15 SpA / 25 SpD / 20 Spe
+- Bite
+- Flamethrower
+- Roar
+- Odor Sleuth
+```
+
+En RandomLocke, Pokémon Showdown puede marcar como ilegales algunos movimientos, habilidades u objetos si no encajan con formatos competitivos estándar.  
+La exportación está pensada principalmente para registrar, visualizar o importar el equipo tal como existe en la partida.
 
 </details>
 
@@ -332,13 +453,13 @@ Descarga el ZIP desde la sección **Releases** del repositorio.
 Última versión:
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
 ```
 
 Archivo recomendado:
 
 ```text
-LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix.zip
+LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix.zip
 ```
 
 Extrae la carpeta en cualquier ubicación de tu ordenador.
@@ -346,7 +467,7 @@ Extrae la carpeta en cualquier ubicación de tu ordenador.
 Ejemplo:
 
 ```text
-Escritorio/LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix/
+Escritorio/LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix/
 ```
 
 </details>
@@ -455,6 +576,27 @@ y confirma con `S` si Windows lo pregunta.
 ---
 
 <details>
+<summary><strong>Uso de la pestaña Showdown</strong></summary>
+
+<br>
+
+1. Abre LockeWeb Companion.
+2. Conecta mGBA cargando el script Lua.
+3. Espera a que el equipo se lea correctamente.
+4. Abre la pestaña `Showdown`.
+5. Revisa el texto generado automáticamente.
+6. Usa:
+   - `Copiar Showdown`;
+   - o `Descargar TXT`.
+7. Pega el resultado en Pokémon Showdown.
+
+El contenido de la pestaña se actualiza en vivo cuando cambia el equipo leído desde mGBA.
+
+</details>
+
+---
+
+<details>
 <summary><strong>Qué hace abrir_lockeweb.bat</strong></summary>
 
 <br>
@@ -480,11 +622,9 @@ El BAT no instala Node.js.
 
 Node.js debe instalarse manualmente una sola vez desde su web oficial.
 
-### Corrección npm de la v1.18.3
+### Corrección npm incluida
 
-La v1.18.3 corrige un problema detectado en instalaciones desde otros PCs.
-
-La release pública ya no incluye `package-lock.json`, para evitar que npm use rutas internas de empaquetado.
+La release pública no incluye `package-lock.json`, para evitar que npm use rutas internas de empaquetado.
 
 Además, se incluye un archivo `.npmrc` local:
 
@@ -526,7 +666,7 @@ LockeWeb-Companion/
 │  └─ emerald_party_sender.lua
 ├─ server.js
 ├─ package.json
-├─ package-lock.json
+├─ .npmrc
 ├─ abrir_lockeweb.bat
 ├─ INICIO_RAPIDO_WINDOWS.md
 └─ README.md
@@ -579,7 +719,7 @@ abrir_lockeweb.bat
 
 <br>
 
-Si estás usando la v1.18.3 o superior, normalmente basta con usar una carpeta limpia y ejecutar:
+Usa una carpeta limpia y ejecuta:
 
 ```text
 abrir_lockeweb.bat
@@ -598,7 +738,33 @@ Luego vuelve a ejecutar:
 abrir_lockeweb.bat
 ```
 
-La v1.18.3 fuerza el registry público oficial de npm y evita el problema de URLs internas en `package-lock.json`.
+La app fuerza el registry público oficial de npm y evita el problema de URLs internas en `package-lock.json`.
+
+</details>
+
+<details>
+<summary><strong>La habilidad no coincide en RandomLocke</strong></summary>
+
+<br>
+
+Desde la v1.19.1, LockeWeb intenta resolver la habilidad real usando la ROM cargada.
+
+Si la ROM randomizada modifica estructuras internas de forma no estándar, puede que aún sea necesario ajustar el lector en futuras versiones.
+
+Si la habilidad no se puede detectar de forma segura, la app evita inventar una habilidad incorrecta.
+
+</details>
+
+<details>
+<summary><strong>Pokémon Showdown marca el equipo como ilegal</strong></summary>
+
+<br>
+
+En RandomLocke es normal que Pokémon Showdown pueda marcar movimientos, habilidades u objetos como ilegales en formatos competitivos estándar.
+
+La exportación está pensada para representar el equipo real de la partida.
+
+Para revisar el equipo sin reglas competitivas estrictas, usa un formato permisivo o utilízalo como texto de registro/visualización.
 
 </details>
 
@@ -638,6 +804,27 @@ Todo funciona en local.
 
 No requiere servidor externo, cuenta de usuario ni conexión permanente a internet, salvo para instalar dependencias la primera vez y para algunos recursos externos si no están cacheados.
 
+### Datos ampliados para Showdown
+
+La v1.19 amplía el modelo de datos del Pokémon con información útil para exportación:
+
+```text
+heldItemId
+abilitySlot
+ability1Id
+ability2Id
+abilityId
+abilitySource
+nature
+ivs
+evs
+experience
+friendship
+ppBonuses
+```
+
+La v1.19.1 mejora la resolución de habilidad para RandomLocke consultando la información disponible de la ROM cargada.
+
 </details>
 
 ---
@@ -653,7 +840,8 @@ LockeWeb Companion:
 - no sube tus datos a ningún servidor;
 - no requiere login;
 - guarda el progreso en el navegador;
-- permite exportar/importar backup JSON.
+- permite exportar/importar backup JSON;
+- permite exportar el equipo actual en formato Pokémon Showdown.
 
 </details>
 
@@ -722,7 +910,7 @@ LockeWeb Companion is a local webapp designed to be used as a **second screen** 
 
 It reads live information from mGBA through a Lua script and a small local Node.js bridge.
 
-The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer card, badges, graveyard and encounter checklist in your browser.
+The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer card, badges, graveyard, encounter checklist and an automatic **Pokémon Showdown** export in your browser.
 
 </details>
 
@@ -733,16 +921,32 @@ The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer
 
 <br>
 
-**Latest stable version:** `v1.18.3 — HelloWorld Update ESP/ENG Public NPM Fix`
+**Latest stable version:** `v1.19.1 — ShowDown Update Ability Fix`
 
 **Download latest release:**
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
 ```
 
 This edition is designed to be easy to use:
 
+- integrated `Showdown` tab;
+- current party export in Pokémon Showdown format;
+- live-updating Showdown text from mGBA data;
+- button to copy the Showdown text;
+- button to download the `.txt`;
+- extended Pokémon data reading:
+  - held item;
+  - ability;
+  - nature;
+  - IVs;
+  - EVs;
+  - experience;
+  - friendship;
+  - PP bonuses;
+- specific ability fix for RandomLocke;
+- ability reading using the loaded ROM when available;
 - built-in Spanish/English language selector;
 - single `.bat` file;
 - automatic internal dependency installation if needed;
@@ -782,10 +986,115 @@ LockeWeb automatically reads from mGBA memory:
 - stats;
 - moves;
 - PP;
-- Pokémon status.
+- Pokémon status;
+- held item;
+- ability;
+- nature;
+- IVs;
+- EVs;
+- experience;
+- friendship;
+- PP bonuses.
 
 The **Live team** section is read-only.  
 It is not edited manually from the webapp.
+
+</details>
+
+<details>
+<summary><strong>Competitive data: IVs, EVs, nature and ability</strong></summary>
+
+<br>
+
+Since v1.19, LockeWeb Companion extends Pokémon reading to prepare Pokémon Showdown-compatible export.
+
+The app displays:
+
+```text
+Nature
+Ability
+Held item
+EVs
+IVs
+```
+
+v1.19.1 specifically fixes ability resolution for RandomLocke.
+
+In a normal ROM, a Pokémon ability can usually be resolved using:
+
+```text
+species + ability slot
+```
+
+However, in a RandomLocke, the randomizer may modify the ROM's internal ability table.
+
+Because of that, LockeWeb attempts to resolve the ability using:
+
+```text
+Pokémon in memory
+→ real ability slot
+→ gBaseStats table from the loaded ROM
+→ real abilityId
+→ ability name
+```
+
+If it cannot resolve the real ability from the ROM, it avoids inventing an incorrect ability.
+
+</details>
+
+<details>
+<summary><strong>Showdown tab</strong></summary>
+
+<br>
+
+v1.19 adds a new tab:
+
+```text
+Showdown
+```
+
+It is located next to the lower app sections, such as checklist, box/graveyard and backup.
+
+Inside the tab, the app automatically generates text compatible with the Pokémon Showdown importer.
+
+The text updates live using the current party read from mGBA.
+
+The tab allows you to:
+
+- view the team in Showdown format;
+- copy the text directly;
+- download it as `.txt`;
+- paste it into Pokémon Showdown.
+
+The exported format includes, when available:
+
+- species;
+- nickname;
+- held item;
+- ability;
+- level;
+- EVs;
+- nature;
+- IVs;
+- moves.
+
+Example format:
+
+```text
+CHARLIE (Arcanine) @ Smoke Ball
+Ability: Intimidate
+Level: 25
+EVs: 12 HP / 8 Atk / 4 Def
+Adamant Nature
+IVs: 31 HP / 28 Atk / 30 Def / 15 SpA / 25 SpD / 20 Spe
+- Bite
+- Flamethrower
+- Roar
+- Odor Sleuth
+```
+
+In RandomLocke, Pokémon Showdown may flag some moves, abilities or items as illegal in standard competitive formats.  
+The export is mainly intended to record, visualize or import the team as it exists in the save.
 
 </details>
 
@@ -1008,13 +1317,13 @@ Download the ZIP from the repository **Releases** section.
 Latest release:
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
 ```
 
 Recommended file:
 
 ```text
-LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix.zip
+LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix.zip
 ```
 
 Extract the folder anywhere on your computer.
@@ -1022,7 +1331,7 @@ Extract the folder anywhere on your computer.
 Example:
 
 ```text
-Desktop/LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix/
+Desktop/LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix/
 ```
 
 </details>
@@ -1131,6 +1440,27 @@ and confirm with `Y` if Windows asks.
 ---
 
 <details>
+<summary><strong>Using the Showdown tab</strong></summary>
+
+<br>
+
+1. Open LockeWeb Companion.
+2. Connect mGBA by loading the Lua script.
+3. Wait until the team is read correctly.
+4. Open the `Showdown` tab.
+5. Review the automatically generated text.
+6. Use:
+   - `Copy Showdown`;
+   - or `Download TXT`.
+7. Paste the result into Pokémon Showdown.
+
+The tab content updates live whenever the party read from mGBA changes.
+
+</details>
+
+---
+
+<details>
 <summary><strong>What abrir_lockeweb.bat does</strong></summary>
 
 <br>
@@ -1156,11 +1486,9 @@ The BAT does not install Node.js.
 
 Node.js must be installed manually once from the official website.
 
-### v1.18.3 npm fix
+### Included npm fix
 
-v1.18.3 fixes an issue detected when installing dependencies on external PCs.
-
-The public release no longer includes `package-lock.json`, so npm does not use internal packaging registry URLs.
+The public release does not include `package-lock.json`, so npm does not use internal packaging registry URLs.
 
 A local `.npmrc` file is also included:
 
@@ -1202,7 +1530,7 @@ LockeWeb-Companion/
 │  └─ emerald_party_sender.lua
 ├─ server.js
 ├─ package.json
-├─ package-lock.json
+├─ .npmrc
 ├─ abrir_lockeweb.bat
 ├─ INICIO_RAPIDO_WINDOWS.md
 └─ README.md
@@ -1255,7 +1583,7 @@ abrir_lockeweb.bat
 
 <br>
 
-If you are using v1.18.3 or newer, using a clean folder and running this should normally be enough:
+Use a clean folder and run:
 
 ```text
 abrir_lockeweb.bat
@@ -1274,7 +1602,33 @@ Then run again:
 abrir_lockeweb.bat
 ```
 
-v1.18.3 forces the official public npm registry and avoids the internal `package-lock.json` URL issue.
+The app forces the official public npm registry and avoids the internal `package-lock.json` URL issue.
+
+</details>
+
+<details>
+<summary><strong>The ability does not match in RandomLocke</strong></summary>
+
+<br>
+
+Since v1.19.1, LockeWeb attempts to resolve the real ability using the loaded ROM.
+
+If the randomized ROM modifies internal structures in a non-standard way, the reader may still require additional adjustments in future versions.
+
+If the ability cannot be detected safely, the app avoids inventing an incorrect ability.
+
+</details>
+
+<details>
+<summary><strong>Pokémon Showdown marks the team as illegal</strong></summary>
+
+<br>
+
+In RandomLocke, Pokémon Showdown may flag moves, abilities or items as illegal in standard competitive formats.
+
+The export is intended to represent the real party from the save.
+
+To review the team without strict competitive rules, use a permissive format or use the export as a registration/visualization text.
 
 </details>
 
@@ -1314,6 +1668,27 @@ Everything runs locally.
 
 It does not require an external server, user account or permanent internet connection, except for first dependency installation and some external resources if they are not cached yet.
 
+### Extended data for Showdown
+
+v1.19 extends the Pokémon data model with useful export information:
+
+```text
+heldItemId
+abilitySlot
+ability1Id
+ability2Id
+abilityId
+abilitySource
+nature
+ivs
+evs
+experience
+friendship
+ppBonuses
+```
+
+v1.19.1 improves ability resolution for RandomLocke by reading available information from the loaded ROM.
+
 </details>
 
 ---
@@ -1329,7 +1704,8 @@ LockeWeb Companion:
 - does not upload your data to any server;
 - does not require login;
 - stores progress in the browser;
-- allows JSON backup export/import.
+- allows JSON backup export/import;
+- allows current party export in Pokémon Showdown format.
 
 </details>
 
