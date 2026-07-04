@@ -10,6 +10,8 @@
 
 <p align="center">
   LockeWeb Companion es una webapp pensada para usarse como <strong>segunda pantalla</strong> mientras juegas una run de Pokémon Esmeralda.
+  <img width="1920" height="1369" alt="banner" src="https://github.com/user-attachments/assets/8881649d-0cc4-4d83-be28-ee51b43160b6" />
+
 </p>
 
 ---
