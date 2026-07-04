@@ -21,6 +21,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1">
+    <strong>Download latest release / Descargar última versión</strong>
+  </a>
+</p>
+
+<p align="center">
   <strong>Languages / Idiomas:</strong> 🇪🇸 Español · 🇬🇧 English
 </p>
 
@@ -31,13 +37,18 @@
 
 <br>
 
-## Qué es LockeWeb Companion
+<details open>
+<summary><strong>Qué es LockeWeb Companion</strong></summary>
+
+<br>
 
 LockeWeb Companion es una webapp local pensada para usarse como **segunda pantalla** mientras juegas una run de **Pokémon Esmeralda RandomLocke/Nuzlocke** en **mGBA**.
 
 Lee información en directo desde mGBA mediante un script Lua y un pequeño bridge local en Node.js.
 
 La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el equipo, mochila, ficha de entrenador, medallas, cementerio y checklist de capturas.
+
+</details>
 
 ---
 
@@ -47,6 +58,12 @@ La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el 
 <br>
 
 **Última versión estable:** `v1.18.1 — HelloWorld Update ESP/ENG`
+
+**Descarga de la última versión:**
+
+```text
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+```
 
 Esta edición está pensada para que cualquier persona pueda usarla de forma sencilla:
 
@@ -69,7 +86,10 @@ Esta edición está pensada para que cualquier persona pueda usarla de forma sen
 
 <br>
 
-### Equipo en directo
+<details>
+<summary><strong>Equipo en directo</strong></summary>
+
+<br>
 
 LockeWeb lee automáticamente desde la memoria de mGBA:
 
@@ -87,9 +107,12 @@ LockeWeb lee automáticamente desde la memoria de mGBA:
 El **Equipo en directo** es solo de lectura.  
 No se edita manualmente desde la web.
 
----
+</details>
 
-### Selector de idioma
+<details>
+<summary><strong>Selector de idioma</strong></summary>
+
+<br>
 
 La app incluye selector de idioma en la parte superior derecha:
 
@@ -115,9 +138,12 @@ También se adaptan por idioma:
 - stats;
 - nombres de movimientos e ítems cuando están disponibles.
 
----
+</details>
 
-### Ficha de entrenador
+<details>
+<summary><strong>Ficha de entrenador</strong></summary>
+
+<br>
 
 Muestra automáticamente:
 
@@ -126,9 +152,12 @@ Muestra automáticamente:
 - dinero;
 - medallas.
 
----
+</details>
 
-### Mochila
+<details>
+<summary><strong>Mochila</strong></summary>
+
+<br>
 
 Lee la mochila desde mGBA y la organiza por bolsillos:
 
@@ -138,9 +167,12 @@ Lee la mochila desde mGBA y la organiza por bolsillos:
 - MT/MO;
 - Bayas.
 
----
+</details>
 
-### Registro rápido de capturas
+<details>
+<summary><strong>Registro rápido de capturas</strong></summary>
+
+<br>
 
 Permite actualizar la checklist de la run rápidamente.
 
@@ -164,9 +196,12 @@ Estados disponibles:
 
 También incluye una opción para rellenar datos desde un Pokémon actual del equipo live.
 
----
+</details>
 
-### Buscador de Pokémon
+<details>
+<summary><strong>Buscador de Pokémon</strong></summary>
+
+<br>
 
 Incluye un buscador con tolerancia a pequeños errores de escritura.
 
@@ -201,15 +236,21 @@ search
 En Pokémon Esmeralda, la mayoría de nombres oficiales de Pokémon de Generación 1, 2 y 3 son iguales en español e inglés.  
 Aun así, la estructura ya permite añadir diferencias de idioma, aliases y variantes comunes en futuras versiones.
 
----
+</details>
 
-### Checklist de Hoenn
+<details>
+<summary><strong>Checklist de Hoenn</strong></summary>
+
+<br>
 
 Incluye una checklist de rutas y zonas de Hoenn para llevar el control de capturas durante la run.
 
----
+</details>
 
-### Cementerio automático
+<details>
+<summary><strong>Cementerio automático</strong></summary>
+
+<br>
 
 La app usa la **Caja 14 del PC** como cementerio automático.
 
@@ -219,15 +260,20 @@ Caja 14 = Pokémon muertos
 
 Cuando un Pokémon muere en la run, muévelo a la Caja 14 del PC y LockeWeb lo mostrará automáticamente en el cementerio.
 
----
+</details>
 
-### Backup
+<details>
+<summary><strong>Backup</strong></summary>
+
+<br>
 
 LockeWeb permite:
 
 - guardar progreso localmente en el navegador;
 - exportar backup JSON;
 - importar backup JSON.
+
+</details>
 
 </details>
 
@@ -238,7 +284,10 @@ LockeWeb permite:
 
 <br>
 
-## Requisitos
+<details open>
+<summary><strong>Requisitos</strong></summary>
+
+<br>
 
 Para usar LockeWeb Companion necesitas:
 
@@ -250,9 +299,12 @@ Para usar LockeWeb Companion necesitas:
 
 Node.js solo hay que instalarlo una vez en el ordenador.
 
----
+</details>
 
-### 1. Instalar Node.js
+<details open>
+<summary><strong>1. Instalar Node.js</strong></summary>
+
+<br>
 
 Instala **Node.js LTS** desde su web oficial:
 
@@ -264,11 +316,20 @@ Solo tienes que hacerlo una vez.
 
 Si ya tienes Node.js instalado, puedes saltar este paso.
 
----
+</details>
 
-### 2. Descargar LockeWeb Companion
+<details open>
+<summary><strong>2. Descargar LockeWeb Companion</strong></summary>
+
+<br>
 
 Descarga el ZIP desde la sección **Releases** del repositorio.
+
+Última versión:
+
+```text
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+```
 
 Archivo recomendado:
 
@@ -284,9 +345,12 @@ Ejemplo:
 Escritorio/LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG/
 ```
 
----
+</details>
 
-### 3. Abrir LockeWeb Companion
+<details open>
+<summary><strong>3. Abrir LockeWeb Companion</strong></summary>
+
+<br>
 
 Dentro de la carpeta extraída, ejecuta:
 
@@ -304,6 +368,8 @@ Clic derecho → Ejecutar como administrador
 
 </details>
 
+</details>
+
 ---
 
 <details open>
@@ -311,13 +377,19 @@ Clic derecho → Ejecutar como administrador
 
 <br>
 
-### 1. Abrir el juego
+<details open>
+<summary><strong>1. Abrir el juego</strong></summary>
+
+<br>
 
 Abre Pokémon Esmeralda en mGBA y carga tu partida.
 
----
+</details>
 
-### 2. Cargar el script Lua
+<details open>
+<summary><strong>2. Cargar el script Lua</strong></summary>
+
+<br>
 
 En mGBA, ve a:
 
@@ -331,9 +403,12 @@ Selecciona el archivo:
 lua/emerald_party_sender.lua
 ```
 
----
+</details>
 
-### 3. Comprobar conexión
+<details open>
+<summary><strong>3. Comprobar conexión</strong></summary>
+
+<br>
 
 Cuando todo esté funcionando correctamente, la web mostrará:
 
@@ -343,9 +418,12 @@ Bridge conectado
 
 A partir de ese momento, LockeWeb empezará a recibir datos desde mGBA.
 
----
+</details>
 
-## Uso diario recomendado
+<details open>
+<summary><strong>Uso diario recomendado</strong></summary>
+
+<br>
 
 Después de tener Node.js instalado, el flujo normal es:
 
@@ -365,6 +443,8 @@ CTRL + C
 ```
 
 y confirma con `S` si Windows lo pregunta.
+
+</details>
 
 </details>
 
@@ -435,7 +515,10 @@ LockeWeb-Companion/
 
 <br>
 
-### La web abre, pero no muestra datos
+<details>
+<summary><strong>La web abre, pero no muestra datos</strong></summary>
+
+<br>
 
 Revisa:
 
@@ -444,9 +527,12 @@ Revisa:
 - que la web muestre `Bridge conectado`;
 - que hayas cargado el script Lua de la carpeta correcta.
 
----
+</details>
 
-### El BAT dice que falta Node.js
+<details>
+<summary><strong>El BAT dice que falta Node.js</strong></summary>
+
+<br>
 
 Instala Node.js LTS desde:
 
@@ -460,9 +546,12 @@ Luego cierra la ventana y vuelve a ejecutar:
 abrir_lockeweb.bat
 ```
 
----
+</details>
 
-### Aparece un error relacionado con `ws` o `node_modules`
+<details>
+<summary><strong>Aparece un error relacionado con ws o node_modules</strong></summary>
+
+<br>
 
 Cierra LockeWeb, borra la carpeta:
 
@@ -478,15 +567,20 @@ abrir_lockeweb.bat
 
 El BAT volverá a instalar las dependencias necesarias.
 
----
+</details>
 
-### Windows bloquea el BAT
+<details>
+<summary><strong>Windows bloquea el BAT</strong></summary>
+
+<br>
 
 Prueba:
 
 ```text
 Clic derecho → Ejecutar como administrador
 ```
+
+</details>
 
 </details>
 
@@ -586,13 +680,18 @@ MIT.
 
 <br>
 
-## What is LockeWeb Companion?
+<details open>
+<summary><strong>What is LockeWeb Companion?</strong></summary>
+
+<br>
 
 LockeWeb Companion is a local webapp designed to be used as a **second screen** while playing a **Pokémon Emerald RandomLocke/Nuzlocke** run in **mGBA**.
 
 It reads live information from mGBA through a Lua script and a small local Node.js bridge.
 
 The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer card, badges, graveyard and encounter checklist in your browser.
+
+</details>
 
 ---
 
@@ -602,6 +701,12 @@ The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer
 <br>
 
 **Latest stable version:** `v1.18.1 — HelloWorld Update ESP/ENG`
+
+**Download latest release:**
+
+```text
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+```
 
 This edition is designed to be easy to use:
 
@@ -624,7 +729,10 @@ This edition is designed to be easy to use:
 
 <br>
 
-### Live team
+<details>
+<summary><strong>Live team</strong></summary>
+
+<br>
 
 LockeWeb automatically reads from mGBA memory:
 
@@ -642,9 +750,12 @@ LockeWeb automatically reads from mGBA memory:
 The **Live team** section is read-only.  
 It is not edited manually from the webapp.
 
----
+</details>
 
-### Language selector
+<details>
+<summary><strong>Language selector</strong></summary>
+
+<br>
 
 The app includes a language selector in the top-right area:
 
@@ -670,9 +781,12 @@ The following elements are also adapted per language:
 - stats;
 - move and item names when available.
 
----
+</details>
 
-### Trainer card
+<details>
+<summary><strong>Trainer card</strong></summary>
+
+<br>
 
 Automatically displays:
 
@@ -681,9 +795,12 @@ Automatically displays:
 - money;
 - badges.
 
----
+</details>
 
-### Bag
+<details>
+<summary><strong>Bag</strong></summary>
+
+<br>
 
 Reads the bag from mGBA and organizes it by pockets:
 
@@ -693,9 +810,12 @@ Reads the bag from mGBA and organizes it by pockets:
 - TM/HM;
 - Berries.
 
----
+</details>
 
-### Quick capture registration
+<details>
+<summary><strong>Quick capture registration</strong></summary>
+
+<br>
 
 Lets you quickly update the run checklist.
 
@@ -719,9 +839,12 @@ Available statuses:
 
 It also includes an option to fill capture data from a current live team Pokémon.
 
----
+</details>
 
-### Pokémon search
+<details>
+<summary><strong>Pokémon search</strong></summary>
+
+<br>
 
 Includes typo-tolerant Pokémon search.
 
@@ -756,15 +879,21 @@ search
 In Pokémon Emerald, most official Generation 1, 2 and 3 Pokémon species names are the same in Spanish and English.  
 Even so, the structure already supports future language differences, aliases and common variants.
 
----
+</details>
 
-### Hoenn checklist
+<details>
+<summary><strong>Hoenn checklist</strong></summary>
+
+<br>
 
 Includes a checklist of Hoenn routes and locations to track captures during the run.
 
----
+</details>
 
-### Automatic graveyard
+<details>
+<summary><strong>Automatic graveyard</strong></summary>
+
+<br>
 
 The app uses **PC Box 14** as the automatic graveyard.
 
@@ -774,15 +903,20 @@ Box 14 = dead Pokémon
 
 When a Pokémon dies in the run, move it to PC Box 14 and LockeWeb will automatically show it in the graveyard section.
 
----
+</details>
 
-### Backup
+<details>
+<summary><strong>Backup</strong></summary>
+
+<br>
 
 LockeWeb allows you to:
 
 - save progress locally in the browser;
 - export JSON backup;
 - import JSON backup.
+
+</details>
 
 </details>
 
@@ -793,7 +927,10 @@ LockeWeb allows you to:
 
 <br>
 
-## Requirements
+<details open>
+<summary><strong>Requirements</strong></summary>
+
+<br>
 
 To use LockeWeb Companion you need:
 
@@ -805,9 +942,12 @@ To use LockeWeb Companion you need:
 
 Node.js only needs to be installed once on the computer.
 
----
+</details>
 
-### 1. Install Node.js
+<details open>
+<summary><strong>1. Install Node.js</strong></summary>
+
+<br>
 
 Install **Node.js LTS** from the official website:
 
@@ -819,11 +959,20 @@ You only need to do this once.
 
 If Node.js is already installed, you can skip this step.
 
----
+</details>
 
-### 2. Download LockeWeb Companion
+<details open>
+<summary><strong>2. Download LockeWeb Companion</strong></summary>
+
+<br>
 
 Download the ZIP from the repository **Releases** section.
+
+Latest release:
+
+```text
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+```
 
 Recommended file:
 
@@ -839,9 +988,12 @@ Example:
 Desktop/LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG/
 ```
 
----
+</details>
 
-### 3. Open LockeWeb Companion
+<details open>
+<summary><strong>3. Open LockeWeb Companion</strong></summary>
+
+<br>
 
 Inside the extracted folder, run:
 
@@ -859,6 +1011,8 @@ Right click → Run as administrator
 
 </details>
 
+</details>
+
 ---
 
 <details open>
@@ -866,13 +1020,19 @@ Right click → Run as administrator
 
 <br>
 
-### 1. Open the game
+<details open>
+<summary><strong>1. Open the game</strong></summary>
+
+<br>
 
 Open Pokémon Emerald in mGBA and load your save.
 
----
+</details>
 
-### 2. Load the Lua script
+<details open>
+<summary><strong>2. Load the Lua script</strong></summary>
+
+<br>
 
 In mGBA, go to:
 
@@ -886,9 +1046,12 @@ Select the file:
 lua/emerald_party_sender.lua
 ```
 
----
+</details>
 
-### 3. Check connection
+<details open>
+<summary><strong>3. Check connection</strong></summary>
+
+<br>
 
 When everything is working correctly, the webapp will show:
 
@@ -898,9 +1061,12 @@ Bridge connected
 
 From that moment, LockeWeb will start receiving data from mGBA.
 
----
+</details>
 
-## Recommended daily usage
+<details open>
+<summary><strong>Recommended daily usage</strong></summary>
+
+<br>
 
 After Node.js is installed, the normal flow is:
 
@@ -920,6 +1086,8 @@ CTRL + C
 ```
 
 and confirm with `Y` if Windows asks.
+
+</details>
 
 </details>
 
@@ -990,7 +1158,10 @@ LockeWeb-Companion/
 
 <br>
 
-### The webapp opens, but does not show data
+<details>
+<summary><strong>The webapp opens, but does not show data</strong></summary>
+
+<br>
 
 Check:
 
@@ -999,9 +1170,12 @@ Check:
 - that the webapp shows `Bridge connected`;
 - that you loaded the Lua script from the correct folder.
 
----
+</details>
 
-### The BAT says Node.js is missing
+<details>
+<summary><strong>The BAT says Node.js is missing</strong></summary>
+
+<br>
 
 Install Node.js LTS from:
 
@@ -1015,9 +1189,12 @@ Then close the window and run again:
 abrir_lockeweb.bat
 ```
 
----
+</details>
 
-### An error appears related to `ws` or `node_modules`
+<details>
+<summary><strong>An error appears related to ws or node_modules</strong></summary>
+
+<br>
 
 Close LockeWeb, delete the folder:
 
@@ -1033,15 +1210,20 @@ abrir_lockeweb.bat
 
 The BAT will reinstall the required dependencies.
 
----
+</details>
 
-### Windows blocks the BAT
+<details>
+<summary><strong>Windows blocks the BAT</strong></summary>
+
+<br>
 
 Try:
 
 ```text
 Right click → Run as administrator
 ```
+
+</details>
 
 </details>
 
