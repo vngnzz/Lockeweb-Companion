@@ -5,18 +5,37 @@
 <h1 align="center">LockeWeb Companion</h1>
 
 <p align="center">
+  <strong>Local companion app for Pokémon Emerald RandomLocke/Nuzlocke runs in mGBA.</strong><br>
   <strong>Companion app local para RandomLocke/Nuzlocke de Pokémon Esmeralda en mGBA.</strong>
 </p>
 
 <p align="center">
-  LockeWeb Companion es una webapp pensada para usarse como <strong>segunda pantalla</strong> mientras juegas una run de Pokémon Esmeralda.
-  <img width="1920" height="1369" alt="banner" src="https://github.com/user-attachments/assets/8881649d-0cc4-4d83-be28-ee51b43160b6" />
-
+  <img width="1920" height="1369" alt="LockeWeb Companion banner" src="https://github.com/user-attachments/assets/8881649d-0cc4-4d83-be28-ee51b43160b6" />
 </p>
 
 ---
 
-LockeWeb Companion lee información en directo desde mGBA mediante un script Lua y un pequeño bridge local en Node.js.
+<p align="center">
+  <strong>Latest stable version / Última versión estable:</strong><br>
+  <code>v1.18.1 — HelloWorld Update ESP/ENG</code>
+</p>
+
+<p align="center">
+  <strong>Languages / Idiomas:</strong> 🇪🇸 Español · 🇬🇧 English
+</p>
+
+---
+
+<details open>
+<summary><strong>🇪🇸 README — Español</strong></summary>
+
+<br>
+
+## Qué es LockeWeb Companion
+
+LockeWeb Companion es una webapp local pensada para usarse como **segunda pantalla** mientras juegas una run de **Pokémon Esmeralda RandomLocke/Nuzlocke** en **mGBA**.
+
+Lee información en directo desde mGBA mediante un script Lua y un pequeño bridge local en Node.js.
 
 La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el equipo, mochila, ficha de entrenador, medallas, cementerio y checklist de capturas.
 
@@ -27,14 +46,16 @@ La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el 
 
 <br>
 
-**Última versión estable:** `v1.17.2 — Easy Start Edition`
+**Última versión estable:** `v1.18.1 — HelloWorld Update ESP/ENG`
 
 Esta edición está pensada para que cualquier persona pueda usarla de forma sencilla:
 
+- selector de idioma español/inglés integrado en la app;
 - un único archivo `.bat`;
 - instalación automática de dependencias internas si faltan;
 - apertura automática del navegador;
 - servidor local incluido;
+- enlace directo al GitHub del proyecto dentro de la app;
 - sin login;
 - sin servicios externos obligatorios;
 - sin tocar la ROM ni el save.
@@ -65,6 +86,34 @@ LockeWeb lee automáticamente desde la memoria de mGBA:
 
 El **Equipo en directo** es solo de lectura.  
 No se edita manualmente desde la web.
+
+---
+
+### Selector de idioma
+
+La app incluye selector de idioma en la parte superior derecha:
+
+```text
+🇪🇸 ES
+🇬🇧 EN
+```
+
+El idioma elegido se guarda localmente en el navegador mediante `localStorage`.
+
+La interfaz puede mostrarse en:
+
+- español;
+- inglés.
+
+También se adaptan por idioma:
+
+- textos de interfaz;
+- estados de captura;
+- estados de equipo/caja;
+- filtros;
+- tipos Pokémon;
+- stats;
+- nombres de movimientos e ítems cuando están disponibles.
 
 ---
 
@@ -141,6 +190,17 @@ El catálogo local incluye Pokémon de:
 
 Hasta **Deoxys #386**.
 
+El catálogo está preparado con estructura bilingüe:
+
+```text
+name_es
+name_en
+search
+```
+
+En Pokémon Esmeralda, la mayoría de nombres oficiales de Pokémon de Generación 1, 2 y 3 son iguales en español e inglés.  
+Aun así, la estructura ya permite añadir diferencias de idioma, aliases y variantes comunes en futuras versiones.
+
 ---
 
 ### Checklist de Hoenn
@@ -213,7 +273,7 @@ Descarga el ZIP desde la sección **Releases** del repositorio.
 Archivo recomendado:
 
 ```text
-LockeWeb-Companion-v1.17.2-Easy-Start.zip
+LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG.zip
 ```
 
 Extrae la carpeta en cualquier ubicación de tu ordenador.
@@ -221,7 +281,7 @@ Extrae la carpeta en cualquier ubicación de tu ordenador.
 Ejemplo:
 
 ```text
-Escritorio/LockeWeb-Companion-v1.17.2-Easy-Start/
+Escritorio/LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG/
 ```
 
 ---
@@ -514,5 +574,562 @@ El proyecto no incluye ROMs, BIOS ni archivos protegidos.
 <br>
 
 MIT.
+
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><strong>🇬🇧 README — English</strong></summary>
+
+<br>
+
+## What is LockeWeb Companion?
+
+LockeWeb Companion is a local webapp designed to be used as a **second screen** while playing a **Pokémon Emerald RandomLocke/Nuzlocke** run in **mGBA**.
+
+It reads live information from mGBA through a Lua script and a small local Node.js bridge.
+
+The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer card, badges, graveyard and encounter checklist in your browser.
+
+---
+
+<details open>
+<summary><strong>Current status</strong></summary>
+
+<br>
+
+**Latest stable version:** `v1.18.1 — HelloWorld Update ESP/ENG`
+
+This edition is designed to be easy to use:
+
+- built-in Spanish/English language selector;
+- single `.bat` file;
+- automatic internal dependency installation if needed;
+- automatic browser launch;
+- local server included;
+- direct GitHub link inside the app;
+- no login;
+- no required external service;
+- no ROM or save modification.
+
+</details>
+
+---
+
+<details>
+<summary><strong>What it does</strong></summary>
+
+<br>
+
+### Live team
+
+LockeWeb automatically reads from mGBA memory:
+
+- current party Pokémon;
+- nickname;
+- real species;
+- sprite;
+- level;
+- current and maximum HP;
+- stats;
+- moves;
+- PP;
+- Pokémon status.
+
+The **Live team** section is read-only.  
+It is not edited manually from the webapp.
+
+---
+
+### Language selector
+
+The app includes a language selector in the top-right area:
+
+```text
+🇪🇸 ES
+🇬🇧 EN
+```
+
+The selected language is saved locally in the browser using `localStorage`.
+
+The interface can be displayed in:
+
+- Spanish;
+- English.
+
+The following elements are also adapted per language:
+
+- UI texts;
+- capture statuses;
+- team/box statuses;
+- filters;
+- Pokémon types;
+- stats;
+- move and item names when available.
+
+---
+
+### Trainer card
+
+Automatically displays:
+
+- trainer name;
+- ID;
+- money;
+- badges.
+
+---
+
+### Bag
+
+Reads the bag from mGBA and organizes it by pockets:
+
+- Items;
+- Key Items;
+- Poké Balls;
+- TM/HM;
+- Berries.
+
+---
+
+### Quick capture registration
+
+Lets you quickly update the run checklist.
+
+You can register:
+
+- route or location;
+- capture status;
+- captured Pokémon;
+- nickname;
+- level;
+- notes.
+
+Available statuses:
+
+- Caught;
+- Missed;
+- Dupe / Species;
+- Gift;
+- Static;
+- Skipped.
+
+It also includes an option to fill capture data from a current live team Pokémon.
+
+---
+
+### Pokémon search
+
+Includes typo-tolerant Pokémon search.
+
+Example:
+
+```text
+chimchou
+```
+
+can find:
+
+```text
+Chinchou
+```
+
+The local catalog includes Pokémon from:
+
+- Generation 1;
+- Generation 2;
+- Generation 3.
+
+Up to **Deoxys #386**.
+
+The catalog is prepared with bilingual structure:
+
+```text
+name_es
+name_en
+search
+```
+
+In Pokémon Emerald, most official Generation 1, 2 and 3 Pokémon species names are the same in Spanish and English.  
+Even so, the structure already supports future language differences, aliases and common variants.
+
+---
+
+### Hoenn checklist
+
+Includes a checklist of Hoenn routes and locations to track captures during the run.
+
+---
+
+### Automatic graveyard
+
+The app uses **PC Box 14** as the automatic graveyard.
+
+```text
+Box 14 = dead Pokémon
+```
+
+When a Pokémon dies in the run, move it to PC Box 14 and LockeWeb will automatically show it in the graveyard section.
+
+---
+
+### Backup
+
+LockeWeb allows you to:
+
+- save progress locally in the browser;
+- export JSON backup;
+- import JSON backup.
+
+</details>
+
+---
+
+<details open>
+<summary><strong>Quick setup</strong></summary>
+
+<br>
+
+## Requirements
+
+To use LockeWeb Companion you need:
+
+- Windows;
+- Node.js installed;
+- mGBA with Lua scripting support;
+- a legal copy of Pokémon Emerald;
+- the ROM loaded in mGBA.
+
+Node.js only needs to be installed once on the computer.
+
+---
+
+### 1. Install Node.js
+
+Install **Node.js LTS** from the official website:
+
+```text
+https://nodejs.org/
+```
+
+You only need to do this once.
+
+If Node.js is already installed, you can skip this step.
+
+---
+
+### 2. Download LockeWeb Companion
+
+Download the ZIP from the repository **Releases** section.
+
+Recommended file:
+
+```text
+LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG.zip
+```
+
+Extract the folder anywhere on your computer.
+
+Example:
+
+```text
+Desktop/LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG/
+```
+
+---
+
+### 3. Open LockeWeb Companion
+
+Inside the extracted folder, run:
+
+```text
+abrir_lockeweb.bat
+```
+
+Normally, a double click is enough.
+
+If Windows blocks permissions or the app does not start correctly, try:
+
+```text
+Right click → Run as administrator
+```
+
+</details>
+
+---
+
+<details open>
+<summary><strong>Usage with mGBA</strong></summary>
+
+<br>
+
+### 1. Open the game
+
+Open Pokémon Emerald in mGBA and load your save.
+
+---
+
+### 2. Load the Lua script
+
+In mGBA, go to:
+
+```text
+Tools → Scripting → Load Script
+```
+
+Select the file:
+
+```text
+lua/emerald_party_sender.lua
+```
+
+---
+
+### 3. Check connection
+
+When everything is working correctly, the webapp will show:
+
+```text
+Bridge connected
+```
+
+From that moment, LockeWeb will start receiving data from mGBA.
+
+---
+
+## Recommended daily usage
+
+After Node.js is installed, the normal flow is:
+
+```text
+1. Run abrir_lockeweb.bat.
+2. Open Pokémon Emerald in mGBA.
+3. Load lua/emerald_party_sender.lua.
+4. Play with LockeWeb open as a second screen.
+```
+
+Keep the black `abrir_lockeweb.bat` window open while playing.
+
+To close LockeWeb:
+
+```text
+CTRL + C
+```
+
+and confirm with `Y` if Windows asks.
+
+</details>
+
+---
+
+<details>
+<summary><strong>What abrir_lockeweb.bat does</strong></summary>
+
+<br>
+
+`abrir_lockeweb.bat` is the only file needed to start LockeWeb Companion.
+
+It automatically:
+
+```text
+1. Checks if Node.js is installed.
+2. Checks if npm is available.
+3. Checks if internal dependencies are missing.
+4. Runs npm install only if needed.
+5. Opens the browser.
+6. Starts the local server.
+```
+
+Important:
+
+```text
+The BAT does not install Node.js.
+```
+
+Node.js must be installed manually once from the official website.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Project structure</strong></summary>
+
+<br>
+
+```text
+LockeWeb-Companion/
+├─ public/
+│  ├─ index.html
+│  ├─ app.js
+│  ├─ styles.css
+│  ├─ manifest.webmanifest
+│  ├─ service-worker.js
+│  ├─ data/
+│  │  └─ pokemon_catalog_gen3.json
+│  └─ web icons
+├─ lua/
+│  └─ emerald_party_sender.lua
+├─ server.js
+├─ package.json
+├─ package-lock.json
+├─ abrir_lockeweb.bat
+├─ INICIO_RAPIDO_WINDOWS.md
+└─ README.md
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>Common problems</strong></summary>
+
+<br>
+
+### The webapp opens, but does not show data
+
+Check:
+
+- that `abrir_lockeweb.bat` is still open;
+- that mGBA has loaded `lua/emerald_party_sender.lua`;
+- that the webapp shows `Bridge connected`;
+- that you loaded the Lua script from the correct folder.
+
+---
+
+### The BAT says Node.js is missing
+
+Install Node.js LTS from:
+
+```text
+https://nodejs.org/
+```
+
+Then close the window and run again:
+
+```text
+abrir_lockeweb.bat
+```
+
+---
+
+### An error appears related to `ws` or `node_modules`
+
+Close LockeWeb, delete the folder:
+
+```text
+node_modules/
+```
+
+and run again:
+
+```text
+abrir_lockeweb.bat
+```
+
+The BAT will reinstall the required dependencies.
+
+---
+
+### Windows blocks the BAT
+
+Try:
+
+```text
+Right click → Run as administrator
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>Technical notes</strong></summary>
+
+<br>
+
+LockeWeb Companion works with this architecture:
+
+```text
+mGBA
+└─ Lua Script
+   └─ Local TCP
+      └─ Node.js local bridge
+         └─ Browser webapp
+```
+
+Everything runs locally.
+
+It does not require an external server, user account or permanent internet connection, except for first dependency installation and some external resources if they are not cached yet.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Security and privacy</strong></summary>
+
+<br>
+
+LockeWeb Companion:
+
+- runs locally;
+- does not upload your data to any server;
+- does not require login;
+- stores progress in the browser;
+- allows JSON backup export/import.
+
+</details>
+
+---
+
+<details>
+<summary><strong>What this project does NOT include</strong></summary>
+
+<br>
+
+This project does not include:
+
+- ROMs;
+- BIOS files;
+- saves;
+- official Pokémon files;
+- proprietary game assets.
+
+Each user must use their own legal copies.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Disclaimer</strong></summary>
+
+<br>
+
+This project is an **unofficial fan-made tool**.
+
+It is not affiliated with, associated with, or endorsed by Nintendo, Game Freak, Creatures Inc. or The Pokémon Company.
+
+Pokémon and related trademarks belong to their respective owners.
+
+This project does not include ROMs, BIOS files or protected files.
+
+</details>
+
+---
+
+<details>
+<summary><strong>License</strong></summary>
+
+<br>
+
+MIT.
+
+</details>
 
 </details>
