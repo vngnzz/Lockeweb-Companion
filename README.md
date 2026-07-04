@@ -17,11 +17,11 @@
 
 <p align="center">
   <strong>Latest stable version / Última versión estable:</strong><br>
-  <code>v1.19.1 — ShowDown Update Ability Fix</code>
+  <code>v1.19.2 — ShowDown Update Item Fix</code>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1">
+  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2">
     <strong>Download latest release / Descargar última versión</strong>
   </a>
 </p>
@@ -57,12 +57,12 @@ La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el 
 
 <br>
 
-**Última versión estable:** `v1.19.1 — ShowDown Update Ability Fix`
+**Última versión estable:** `v1.19.2 — ShowDown Update Item Fix`
 
 **Descarga de la última versión:**
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
 ```
 
 Esta edición está pensada para que cualquier persona pueda usarla de forma sencilla:
@@ -82,6 +82,8 @@ Esta edición está pensada para que cualquier persona pueda usarla de forma sen
   - felicidad;
   - PP bonuses;
 - corrección específica para habilidades en RandomLocke;
+- corrección de nombres de objetos equipados usando IDs internos de Pokémon Emerald / Gen III;
+- tabla local de objetos Gen III para UI y exportación Showdown;
 - lectura de habilidad usando la ROM cargada cuando está disponible;
 - selector de idioma español/inglés integrado en la app;
 - un único archivo `.bat`;
@@ -138,7 +140,7 @@ No se edita manualmente desde la web.
 </details>
 
 <details>
-<summary><strong>Datos competitivos: IVs, EVs, naturaleza y habilidad</strong></summary>
+<summary><strong>Datos competitivos: IVs, EVs, naturaleza, habilidad y objeto</strong></summary>
 
 <br>
 
@@ -155,6 +157,17 @@ IVs
 ```
 
 En la v1.19.1 se corrige especialmente la habilidad para RandomLocke.
+
+En la v1.19.2 se corrige la resolución de nombres de objetos equipados usando IDs internos de Pokémon Esmeralda / Gen III.
+
+Esto evita que un `heldItemId` correcto leído desde memoria se transforme en un nombre incorrecto por usar un índice externo incompatible.
+
+</details>
+
+<details>
+<summary><strong>Corrección de habilidad para RandomLocke</strong></summary>
+
+<br>
 
 En una ROM normal, la habilidad suele poder resolverse con:
 
@@ -175,6 +188,52 @@ Pokémon en memoria
 ```
 
 Si no puede resolver la habilidad real desde la ROM, evita inventar una habilidad incorrecta.
+
+</details>
+
+<details>
+<summary><strong>Corrección de objetos equipados para Showdown</strong></summary>
+
+<br>
+
+La v1.19.2 corrige la resolución de objetos equipados.
+
+El problema probable era:
+
+```text
+heldItemId leído desde memoria = correcto
+nombre asignado al heldItemId = incorrecto
+```
+
+Los IDs internos de Pokémon Emerald / Gen III no deben tratarse como equivalentes a índices externos de otras fuentes.
+
+Ahora LockeWeb usa una tabla local de objetos Gen III como fuente principal:
+
+```text
+heldItemId leído desde memoria
+→ tabla local Gen III / Emerald
+→ nombre correcto en UI
+→ nombre inglés correcto para Showdown
+```
+
+Ejemplos de IDs cubiertos:
+
+```text
+191 → Soul Dew
+194 → Smoke Ball
+183 → Quick Claw
+197 → Lucky Egg
+200 → Leftovers
+186 → Choice Band
+187 → King's Rock
+179 → Bright Powder
+73  → Guard Spec.
+74  → Dire Hit
+75  → X Attack
+76  → X Defend
+```
+
+PokéAPI ya no se usa como fuente principal para objetos conocidos de Pokémon Emerald.
 
 </details>
 
@@ -291,6 +350,8 @@ Lee la mochila desde mGBA y la organiza por bolsillos:
 - Poké Balls;
 - MT/MO;
 - Bayas.
+
+Desde la v1.19.2, los nombres de objetos conocidos se priorizan desde la tabla local de Pokémon Emerald / Gen III.
 
 </details>
 
@@ -453,13 +514,13 @@ Descarga el ZIP desde la sección **Releases** del repositorio.
 Última versión:
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
 ```
 
 Archivo recomendado:
 
 ```text
-LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix.zip
+LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix.zip
 ```
 
 Extrae la carpeta en cualquier ubicación de tu ordenador.
@@ -467,7 +528,7 @@ Extrae la carpeta en cualquier ubicación de tu ordenador.
 Ejemplo:
 
 ```text
-Escritorio/LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix/
+Escritorio/LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix/
 ```
 
 </details>
@@ -756,6 +817,19 @@ Si la habilidad no se puede detectar de forma segura, la app evita inventar una 
 </details>
 
 <details>
+<summary><strong>El objeto equipado no coincide</strong></summary>
+
+<br>
+
+Desde la v1.19.2, LockeWeb usa una tabla local de objetos de Pokémon Emerald / Gen III para resolver objetos conocidos.
+
+Si un objeto concreto sigue apareciendo mal, conviene revisar el `heldItemId` mostrado/leído y añadir o corregir ese ID en la tabla local.
+
+La prioridad del exportador debe ser no exportar un objeto incorrecto.
+
+</details>
+
+<details>
 <summary><strong>Pokémon Showdown marca el equipo como ilegal</strong></summary>
 
 <br>
@@ -824,6 +898,8 @@ ppBonuses
 ```
 
 La v1.19.1 mejora la resolución de habilidad para RandomLocke consultando la información disponible de la ROM cargada.
+
+La v1.19.2 mejora la resolución de objetos equipados usando IDs internos de Pokémon Emerald / Gen III y una tabla local para exportación Showdown.
 
 </details>
 
@@ -921,12 +997,12 @@ The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer
 
 <br>
 
-**Latest stable version:** `v1.19.1 — ShowDown Update Ability Fix`
+**Latest stable version:** `v1.19.2 — ShowDown Update Item Fix`
 
 **Download latest release:**
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
 ```
 
 This edition is designed to be easy to use:
@@ -946,6 +1022,8 @@ This edition is designed to be easy to use:
   - friendship;
   - PP bonuses;
 - specific ability fix for RandomLocke;
+- held item name fix using Pokémon Emerald / Gen III internal item IDs;
+- local Gen III item table for UI and Showdown export;
 - ability reading using the loaded ROM when available;
 - built-in Spanish/English language selector;
 - single `.bat` file;
@@ -1002,7 +1080,7 @@ It is not edited manually from the webapp.
 </details>
 
 <details>
-<summary><strong>Competitive data: IVs, EVs, nature and ability</strong></summary>
+<summary><strong>Competitive data: IVs, EVs, nature, ability and held item</strong></summary>
 
 <br>
 
@@ -1019,6 +1097,17 @@ IVs
 ```
 
 v1.19.1 specifically fixes ability resolution for RandomLocke.
+
+v1.19.2 fixes held item name resolution using Pokémon Emerald / Gen III internal item IDs.
+
+This avoids a correct `heldItemId` from memory being transformed into a wrong item name by using an incompatible external index.
+
+</details>
+
+<details>
+<summary><strong>RandomLocke ability fix</strong></summary>
+
+<br>
 
 In a normal ROM, a Pokémon ability can usually be resolved using:
 
@@ -1039,6 +1128,52 @@ Pokémon in memory
 ```
 
 If it cannot resolve the real ability from the ROM, it avoids inventing an incorrect ability.
+
+</details>
+
+<details>
+<summary><strong>Held item fix for Showdown</strong></summary>
+
+<br>
+
+v1.19.2 fixes held item resolution.
+
+The likely issue was:
+
+```text
+heldItemId read from memory = correct
+name assigned to heldItemId = incorrect
+```
+
+Pokémon Emerald / Gen III internal item IDs must not be treated as equivalent to external indexes from other sources.
+
+LockeWeb now uses a local Gen III item table as the main source:
+
+```text
+heldItemId read from memory
+→ local Gen III / Emerald table
+→ correct UI name
+→ correct English name for Showdown
+```
+
+Examples of covered IDs:
+
+```text
+191 → Soul Dew
+194 → Smoke Ball
+183 → Quick Claw
+197 → Lucky Egg
+200 → Leftovers
+186 → Choice Band
+187 → King's Rock
+179 → Bright Powder
+73  → Guard Spec.
+74  → Dire Hit
+75  → X Attack
+76  → X Defend
+```
+
+PokéAPI is no longer the main source for known Pokémon Emerald items.
 
 </details>
 
@@ -1155,6 +1290,8 @@ Reads the bag from mGBA and organizes it by pockets:
 - Poké Balls;
 - TM/HM;
 - Berries.
+
+Since v1.19.2, known item names are prioritized from the local Pokémon Emerald / Gen III table.
 
 </details>
 
@@ -1317,13 +1454,13 @@ Download the ZIP from the repository **Releases** section.
 Latest release:
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
 ```
 
 Recommended file:
 
 ```text
-LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix.zip
+LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix.zip
 ```
 
 Extract the folder anywhere on your computer.
@@ -1331,7 +1468,7 @@ Extract the folder anywhere on your computer.
 Example:
 
 ```text
-Desktop/LockeWeb-Companion-v1.19.1-ShowDown-Update-Ability-Fix/
+Desktop/LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix/
 ```
 
 </details>
@@ -1620,6 +1757,19 @@ If the ability cannot be detected safely, the app avoids inventing an incorrect 
 </details>
 
 <details>
+<summary><strong>The held item does not match</strong></summary>
+
+<br>
+
+Since v1.19.2, LockeWeb uses a local Pokémon Emerald / Gen III item table for known items.
+
+If a specific item still appears wrong, check the displayed/read `heldItemId` and add or correct that ID in the local table.
+
+The exporter priority should be to avoid exporting an incorrect item.
+
+</details>
+
+<details>
 <summary><strong>Pokémon Showdown marks the team as illegal</strong></summary>
 
 <br>
@@ -1688,6 +1838,8 @@ ppBonuses
 ```
 
 v1.19.1 improves ability resolution for RandomLocke by reading available information from the loaded ROM.
+
+v1.19.2 improves held item resolution using Pokémon Emerald / Gen III internal IDs and a local table for Showdown export.
 
 </details>
 
