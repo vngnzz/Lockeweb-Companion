@@ -32,9 +32,9 @@ Pensada para usar en una segunda pantalla mientras juegas. La app muestra inform
 - Interfaz responsive.
 - Inicio fácil en Windows con archivos `.bat`.
 
-## Versión actual
+## Versión actual v1.17.1
 
-```text
-v1.17.1
+<img width="1920" height="5127" alt="image" src="https://github.com/user-attachments/assets/f09d37ad-e218-405c-bc80-a3c5976ce295" />
 
-<img width="1920" height="5127" alt="image" src="https://github.com/user-attachments/assets/88932909-e4a0-42c0-bc16-d4305db087ea" />
+
+
