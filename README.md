@@ -17,11 +17,11 @@
 
 <p align="center">
   <strong>Latest stable version / Última versión estable:</strong><br>
-  <code>v1.18.1 — HelloWorld Update ESP/ENG</code>
+  <code>v1.18.3 — HelloWorld Update ESP/ENG Public NPM Fix</code>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1">
+  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3">
     <strong>Download latest release / Descargar última versión</strong>
   </a>
 </p>
@@ -57,12 +57,12 @@ La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el 
 
 <br>
 
-**Última versión estable:** `v1.18.1 — HelloWorld Update ESP/ENG`
+**Última versión estable:** `v1.18.3 — HelloWorld Update ESP/ENG Public NPM Fix`
 
 **Descarga de la última versión:**
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
 ```
 
 Esta edición está pensada para que cualquier persona pueda usarla de forma sencilla:
@@ -73,6 +73,10 @@ Esta edición está pensada para que cualquier persona pueda usarla de forma sen
 - apertura automática del navegador;
 - servidor local incluido;
 - enlace directo al GitHub del proyecto dentro de la app;
+- corrección del registry público de npm para evitar errores de instalación en otros PCs;
+- sin `package-lock.json` con URLs internas;
+- archivo `.npmrc` local incluido para forzar `https://registry.npmjs.org/`;
+- `abrir_lockeweb.bat` instala dependencias usando el registry público oficial;
 - sin login;
 - sin servicios externos obligatorios;
 - sin tocar la ROM ni el save.
@@ -328,13 +332,13 @@ Descarga el ZIP desde la sección **Releases** del repositorio.
 Última versión:
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
 ```
 
 Archivo recomendado:
 
 ```text
-LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG.zip
+LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix.zip
 ```
 
 Extrae la carpeta en cualquier ubicación de tu ordenador.
@@ -342,7 +346,7 @@ Extrae la carpeta en cualquier ubicación de tu ordenador.
 Ejemplo:
 
 ```text
-Escritorio/LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG/
+Escritorio/LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix/
 ```
 
 </details>
@@ -476,6 +480,28 @@ El BAT no instala Node.js.
 
 Node.js debe instalarse manualmente una sola vez desde su web oficial.
 
+### Corrección npm de la v1.18.3
+
+La v1.18.3 corrige un problema detectado en instalaciones desde otros PCs.
+
+La release pública ya no incluye `package-lock.json`, para evitar que npm use rutas internas de empaquetado.
+
+Además, se incluye un archivo `.npmrc` local:
+
+```text
+registry=https://registry.npmjs.org/
+audit=false
+fund=false
+```
+
+Y el BAT fuerza la instalación con el registry público oficial:
+
+```bat
+npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund
+```
+
+Si existe un `package-lock.json` antiguo con un registry interno incorrecto, el BAT lo detecta y lo elimina antes de instalar dependencias.
+
 </details>
 
 ---
@@ -549,23 +575,30 @@ abrir_lockeweb.bat
 </details>
 
 <details>
-<summary><strong>Aparece un error relacionado con ws o node_modules</strong></summary>
+<summary><strong>Aparece un error relacionado con ws, npm, node_modules o ETIMEDOUT</strong></summary>
 
 <br>
 
-Cierra LockeWeb, borra la carpeta:
-
-```text
-node_modules/
-```
-
-y vuelve a ejecutar:
+Si estás usando la v1.18.3 o superior, normalmente basta con usar una carpeta limpia y ejecutar:
 
 ```text
 abrir_lockeweb.bat
 ```
 
-El BAT volverá a instalar las dependencias necesarias.
+Si vienes de una versión anterior o has mezclado archivos, cierra LockeWeb y borra:
+
+```text
+node_modules/
+package-lock.json
+```
+
+Luego vuelve a ejecutar:
+
+```text
+abrir_lockeweb.bat
+```
+
+La v1.18.3 fuerza el registry público oficial de npm y evita el problema de URLs internas en `package-lock.json`.
 
 </details>
 
@@ -700,12 +733,12 @@ The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer
 
 <br>
 
-**Latest stable version:** `v1.18.1 — HelloWorld Update ESP/ENG`
+**Latest stable version:** `v1.18.3 — HelloWorld Update ESP/ENG Public NPM Fix`
 
 **Download latest release:**
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
 ```
 
 This edition is designed to be easy to use:
@@ -716,6 +749,10 @@ This edition is designed to be easy to use:
 - automatic browser launch;
 - local server included;
 - direct GitHub link inside the app;
+- public npm registry fix to avoid dependency installation errors on other PCs;
+- no `package-lock.json` with internal URLs;
+- local `.npmrc` file included to force `https://registry.npmjs.org/`;
+- `abrir_lockeweb.bat` installs dependencies using the official public npm registry;
 - no login;
 - no required external service;
 - no ROM or save modification.
@@ -971,13 +1008,13 @@ Download the ZIP from the repository **Releases** section.
 Latest release:
 
 ```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.1
+https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.18.3
 ```
 
 Recommended file:
 
 ```text
-LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG.zip
+LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix.zip
 ```
 
 Extract the folder anywhere on your computer.
@@ -985,7 +1022,7 @@ Extract the folder anywhere on your computer.
 Example:
 
 ```text
-Desktop/LockeWeb-Companion-v1.18.1-HelloWorld-Update-ESP-ENG/
+Desktop/LockeWeb-Companion-v1.18.3-HelloWorld-Update-ESP-ENG-Public-NPM-Fix/
 ```
 
 </details>
@@ -1119,6 +1156,28 @@ The BAT does not install Node.js.
 
 Node.js must be installed manually once from the official website.
 
+### v1.18.3 npm fix
+
+v1.18.3 fixes an issue detected when installing dependencies on external PCs.
+
+The public release no longer includes `package-lock.json`, so npm does not use internal packaging registry URLs.
+
+A local `.npmrc` file is also included:
+
+```text
+registry=https://registry.npmjs.org/
+audit=false
+fund=false
+```
+
+And the BAT forces dependency installation through the official public registry:
+
+```bat
+npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund
+```
+
+If an old `package-lock.json` exists with a wrong internal registry, the BAT detects it and deletes it before installing dependencies.
+
 </details>
 
 ---
@@ -1192,23 +1251,30 @@ abrir_lockeweb.bat
 </details>
 
 <details>
-<summary><strong>An error appears related to ws or node_modules</strong></summary>
+<summary><strong>An error appears related to ws, npm, node_modules or ETIMEDOUT</strong></summary>
 
 <br>
 
-Close LockeWeb, delete the folder:
-
-```text
-node_modules/
-```
-
-and run again:
+If you are using v1.18.3 or newer, using a clean folder and running this should normally be enough:
 
 ```text
 abrir_lockeweb.bat
 ```
 
-The BAT will reinstall the required dependencies.
+If you came from an older version or mixed files, close LockeWeb and delete:
+
+```text
+node_modules/
+package-lock.json
+```
+
+Then run again:
+
+```text
+abrir_lockeweb.bat
+```
+
+v1.18.3 forces the official public npm registry and avoids the internal `package-lock.json` URL issue.
 
 </details>
 
