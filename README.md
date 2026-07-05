@@ -1,1911 +1,448 @@
 <p align="center">
-  <img width="192" height="192" alt="LockeWeb Companion icon" src="https://github.com/user-attachments/assets/400bd182-2c9c-442b-9551-9f2a0d7da62d" />
+  <img width="192" height="192" alt="PokeCompanion Logo" src="https://github.com/user-attachments/assets/abbb1023-e861-47cc-918e-90e473aff093" />
 </p>
 
-<h1 align="center">LockeWeb Companion</h1>
+<h1 align="center">PokeCompanion GEN3</h1>
 
 <p align="center">
-  <strong>Local companion app for Pokémon Emerald RandomLocke/Nuzlocke runs in mGBA.</strong><br>
-  <strong>Companion app local para RandomLocke/Nuzlocke de Pokémon Esmeralda en mGBA.</strong>
-</p>
-
-<p align="center">
-  <img width="1920" height="1369" alt="LockeWeb Companion banner" src="https://github.com/user-attachments/assets/8881649d-0cc4-4d83-be28-ee51b43160b6" />
-</p>
-
----
-
-<p align="center">
-  <strong>Latest stable version / Última versión estable:</strong><br>
-  <code>v1.19.2 — ShowDown Update Item Fix</code>
+  <strong>LockeWeb Companion for Pokémon Generation III Nuzlocke runs</strong><br>
+  <strong>Companion LockeWeb para partidas Nuzlocke de Pokémon Generación III</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2">
-    <strong>Download latest release / Descargar última versión</strong>
-  </a>
-</p>
-
-<p align="center">
-  <strong>Languages / Idiomas:</strong> 🇪🇸 Español · 🇬🇧 English
+  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases"><strong>Download latest releases / Descargar últimas versiones</strong></a>
 </p>
 
 ---
 
 <details open>
-<summary><strong>🇪🇸 README — Español</strong></summary>
+<summary><strong>🇪🇸 README en castellano</strong></summary>
 
 <br>
 
-<details open>
-<summary><strong>Qué es LockeWeb Companion</strong></summary>
+<img width="1920" height="911" alt="PokeCompanion GEN3 banner" src="https://github.com/user-attachments/assets/8d920c62-5ebc-4aa8-864c-472cabbcd205" />
 
-<br>
+## ¿Qué es PokeCompanion GEN3?
 
-LockeWeb Companion es una webapp local pensada para usarse como **segunda pantalla** mientras juegas una run de **Pokémon Esmeralda RandomLocke/Nuzlocke** en **mGBA**.
+**PokeCompanion GEN3** es una **webapp companion local** orientada a partidas de Pokémon de **tercera generación**. Está pensada especialmente para runs **Nuzlocke / LockeWeb** y funciona junto a **mGBA** mediante scripts Lua y un pequeño servidor local.
 
-Lee información en directo desde mGBA mediante un script Lua y un pequeño bridge local en Node.js.
+La app lee información de la partida en vivo y la muestra en una interfaz web: equipo, ficha de entrenador, mochila, cementerio, checklist y utilidades para documentar la run.
 
-La idea es simple: tú juegas en mGBA, y LockeWeb te muestra en el navegador el equipo, mochila, ficha de entrenador, medallas, cementerio, checklist de capturas y una exportación automática en formato **Pokémon Showdown**.
-
-</details>
+El desarrollo sigue en curso. La versión **v2.0 — Hall of Fame** estabiliza la base GEN3 completa, pero se seguirán añadiendo mejoras, nuevas funciones y ajustes en futuras versiones.
 
 ---
 
-<details open>
-<summary><strong>Estado actual</strong></summary>
+## Objetivo del proyecto
 
-<br>
+PokeCompanion nace para convertir una partida Nuzlocke clásica en una experiencia más visual, cómoda y organizada.
 
-**Última versión estable:** `v1.19.2 — ShowDown Update Item Fix`
+Sus objetivos principales son:
 
-**Descarga de la última versión:**
+- Mostrar información útil de la partida sin modificar la ROM.
+- Evitar cheats, editores de saves o herramientas invasivas.
+- Ayudar a registrar encuentros, capturas, muertes y progreso.
+- Facilitar el seguimiento de la run desde una interfaz web clara.
+- Mantener perfiles separados para cada juego.
+- Servir como base abierta para futuras mejoras de la comunidad.
 
-```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
-```
-
-Esta edición está pensada para que cualquier persona pueda usarla de forma sencilla:
-
-- pestaña `Showdown` integrada;
-- exportación del equipo actual en formato Pokémon Showdown;
-- texto Showdown actualizado en vivo con los datos leídos desde mGBA;
-- botón para copiar el texto Showdown;
-- botón para descargar el `.txt`;
-- lectura extendida de datos del Pokémon:
-  - objeto equipado;
-  - habilidad;
-  - naturaleza;
-  - IVs;
-  - EVs;
-  - experiencia;
-  - felicidad;
-  - PP bonuses;
-- corrección específica para habilidades en RandomLocke;
-- corrección de nombres de objetos equipados usando IDs internos de Pokémon Emerald / Gen III;
-- tabla local de objetos Gen III para UI y exportación Showdown;
-- lectura de habilidad usando la ROM cargada cuando está disponible;
-- selector de idioma español/inglés integrado en la app;
-- un único archivo `.bat`;
-- instalación automática de dependencias internas si faltan;
-- apertura automática del navegador;
-- servidor local incluido;
-- enlace directo al GitHub del proyecto dentro de la app;
-- corrección del registry público de npm para evitar errores de instalación en otros PCs;
-- sin `package-lock.json` con URLs internas;
-- archivo `.npmrc` local incluido para forzar `https://registry.npmjs.org/`;
-- `abrir_lockeweb.bat` instala dependencias usando el registry público oficial;
-- sin login;
-- sin servicios externos obligatorios;
-- sin tocar la ROM ni el save.
-
-</details>
+PokeCompanion es un **companion**, no un editor de partidas.
 
 ---
 
-<details>
-<summary><strong>Qué hace</strong></summary>
+## Funciones principales
 
-<br>
+### Registro y control de la run
 
-<details>
-<summary><strong>Equipo en directo</strong></summary>
+Permite llevar un seguimiento manual de la partida: encuentros, capturas, rutas, estados, progreso y datos útiles de la run.
 
-<br>
+### Live Team
 
-LockeWeb lee automáticamente desde la memoria de mGBA:
+Muestra el equipo actual leído desde mGBA, incluyendo Pokémon, motes, niveles, vida, estados y datos relevantes.
 
-- Pokémon actuales del equipo;
-- mote;
-- especie real;
-- sprite;
-- nivel;
-- PS actuales y máximos;
-- stats;
-- ataques;
-- PP;
-- estado del Pokémon;
-- objeto equipado;
-- habilidad;
-- naturaleza;
-- IVs;
-- EVs;
-- experiencia;
-- felicidad;
-- PP bonuses.
+### Ficha de entrenador
 
-El **Equipo en directo** es solo de lectura.  
-No se edita manualmente desde la web.
+La Trainer Card muestra nombre, ID, dinero, medallas, estado de Liga Pokémon y juego activo.
 
-</details>
+<img width="338" height="424" alt="Trainer Card" src="https://github.com/user-attachments/assets/9c9bc5d5-fccf-4248-b0c5-c5d355b9b3c0" />
 
-<details>
-<summary><strong>Datos competitivos: IVs, EVs, naturaleza, habilidad y objeto</strong></summary>
+### Mochila
 
-<br>
+Lee y muestra la mochila del jugador, incluyendo objetos relevantes de la partida.
 
-Desde la v1.19, LockeWeb Companion amplía la lectura del Pokémon para preparar exportación compatible con Pokémon Showdown.
+<img width="345" height="567" alt="Mochila" src="https://github.com/user-attachments/assets/496da4c5-672c-4fd7-abcc-0334cc87028a" />
 
-La app muestra:
+### Cementerio Nuzlocke
 
-```text
-Naturaleza
-Habilidad
-Objeto equipado
-EVs
-IVs
-```
+La **Caja 14** funciona como cementerio. Los Pokémon colocados ahí aparecen automáticamente en la sección de muertos.
 
-En la v1.19.1 se corrige especialmente la habilidad para RandomLocke.
+<img width="1902" height="477" alt="Cementerio" src="https://github.com/user-attachments/assets/aff5f030-a57c-46d7-bf7d-c1b1db7c5d64" />
 
-En la v1.19.2 se corrige la resolución de nombres de objetos equipados usando IDs internos de Pokémon Esmeralda / Gen III.
+### Checklist
 
-Esto evita que un `heldItemId` correcto leído desde memoria se transforme en un nombre incorrecto por usar un índice externo incompatible.
+Incluye checklist para controlar encuentros, capturas y progreso manual por juego.
 
-</details>
+<img width="1920" height="911" alt="Checklist" src="https://github.com/user-attachments/assets/07c630ec-c321-4051-a267-7186e8ac71ff" />
 
-<details>
-<summary><strong>Corrección de habilidad para RandomLocke</strong></summary>
+### Exportación a Pokémon Showdown mediante PokéPaste
 
-<br>
+Permite generar una exportación del equipo en formato compatible con **Pokémon Showdown / PokéPaste**, evitando tener que configurar manualmente cada Pokémon en Showdown.
 
-En una ROM normal, la habilidad suele poder resolverse con:
+<img width="1886" height="718" alt="Exportación Pokémon Showdown / PokéPaste" src="https://github.com/user-attachments/assets/517f7980-c9f8-48f9-b081-60656a28c1a6" />
 
-```text
-especie + ranura de habilidad
-```
+### Backups y datos locales
 
-Pero en una RandomLocke, el randomizer puede modificar la tabla interna de habilidades de la ROM.
+PokeCompanion guarda datos locales en el navegador y permite gestionar información útil de la run.
 
-Por eso, LockeWeb intenta resolver la habilidad usando:
-
-```text
-Pokémon en memoria
-→ ability slot real
-→ tabla gBaseStats de la ROM cargada
-→ abilityId real
-→ nombre de habilidad
-```
-
-Si no puede resolver la habilidad real desde la ROM, evita inventar una habilidad incorrecta.
-
-</details>
-
-<details>
-<summary><strong>Corrección de objetos equipados para Showdown</strong></summary>
-
-<br>
-
-La v1.19.2 corrige la resolución de objetos equipados.
-
-El problema probable era:
-
-```text
-heldItemId leído desde memoria = correcto
-nombre asignado al heldItemId = incorrecto
-```
-
-Los IDs internos de Pokémon Emerald / Gen III no deben tratarse como equivalentes a índices externos de otras fuentes.
-
-Ahora LockeWeb usa una tabla local de objetos Gen III como fuente principal:
-
-```text
-heldItemId leído desde memoria
-→ tabla local Gen III / Emerald
-→ nombre correcto en UI
-→ nombre inglés correcto para Showdown
-```
-
-Ejemplos de IDs cubiertos:
-
-```text
-191 → Soul Dew
-194 → Smoke Ball
-183 → Quick Claw
-197 → Lucky Egg
-200 → Leftovers
-186 → Choice Band
-187 → King's Rock
-179 → Bright Powder
-73  → Guard Spec.
-74  → Dire Hit
-75  → X Attack
-76  → X Defend
-```
-
-PokéAPI ya no se usa como fuente principal para objetos conocidos de Pokémon Emerald.
-
-</details>
-
-<details>
-<summary><strong>Pestaña Showdown</strong></summary>
-
-<br>
-
-La v1.19 añade una nueva pestaña:
-
-```text
-Showdown
-```
-
-Está situada junto a las secciones inferiores de la app, como la checklist, la caja/cementerio y backup.
-
-Dentro de la pestaña se genera automáticamente un texto compatible con el importador de Pokémon Showdown.
-
-El texto se actualiza en vivo con el equipo actual leído desde mGBA.
-
-La pestaña permite:
-
-- ver el equipo en formato Showdown;
-- copiar el texto directamente;
-- descargarlo como `.txt`;
-- pegarlo después en Pokémon Showdown.
-
-El formato exportado incluye, cuando está disponible:
-
-- especie;
-- mote;
-- objeto equipado;
-- habilidad;
-- nivel;
-- EVs;
-- naturaleza;
-- IVs;
-- movimientos.
-
-Ejemplo de formato:
-
-```text
-CHARLIE (Arcanine) @ Smoke Ball
-Ability: Intimidate
-Level: 25
-EVs: 12 HP / 8 Atk / 4 Def
-Adamant Nature
-IVs: 31 HP / 28 Atk / 30 Def / 15 SpA / 25 SpD / 20 Spe
-- Bite
-- Flamethrower
-- Roar
-- Odor Sleuth
-```
-
-En RandomLocke, Pokémon Showdown puede marcar como ilegales algunos movimientos, habilidades u objetos si no encajan con formatos competitivos estándar.  
-La exportación está pensada principalmente para registrar, visualizar o importar el equipo tal como existe en la partida.
-
-</details>
-
-<details>
-<summary><strong>Selector de idioma</strong></summary>
-
-<br>
-
-La app incluye selector de idioma en la parte superior derecha:
-
-```text
-🇪🇸 ES
-🇬🇧 EN
-```
-
-El idioma elegido se guarda localmente en el navegador mediante `localStorage`.
-
-La interfaz puede mostrarse en:
-
-- español;
-- inglés.
-
-También se adaptan por idioma:
-
-- textos de interfaz;
-- estados de captura;
-- estados de equipo/caja;
-- filtros;
-- tipos Pokémon;
-- stats;
-- nombres de movimientos e ítems cuando están disponibles.
-
-</details>
-
-<details>
-<summary><strong>Ficha de entrenador</strong></summary>
-
-<br>
-
-Muestra automáticamente:
-
-- nombre del entrenador;
-- ID;
-- dinero;
-- medallas.
-
-</details>
-
-<details>
-<summary><strong>Mochila</strong></summary>
-
-<br>
-
-Lee la mochila desde mGBA y la organiza por bolsillos:
-
-- Objetos;
-- Objetos clave;
-- Poké Balls;
-- MT/MO;
-- Bayas.
-
-Desde la v1.19.2, los nombres de objetos conocidos se priorizan desde la tabla local de Pokémon Emerald / Gen III.
-
-</details>
-
-<details>
-<summary><strong>Registro rápido de capturas</strong></summary>
-
-<br>
-
-Permite actualizar la checklist de la run rápidamente.
-
-Puedes registrar:
-
-- ruta o sitio;
-- estado de la captura;
-- Pokémon capturado;
-- mote;
-- nivel;
-- notas.
-
-Estados disponibles:
-
-- Capturado;
-- Perdido;
-- Dupe / Species;
-- Regalo;
-- Estático;
-- Saltado.
-
-También incluye una opción para rellenar datos desde un Pokémon actual del equipo live.
-
-</details>
-
-<details>
-<summary><strong>Buscador de Pokémon</strong></summary>
-
-<br>
-
-Incluye un buscador con tolerancia a pequeños errores de escritura.
-
-Ejemplo:
-
-```text
-chimchou
-```
-
-puede encontrar:
-
-```text
-Chinchou
-```
-
-El catálogo local incluye Pokémon de:
-
-- Generación 1;
-- Generación 2;
-- Generación 3.
-
-Hasta **Deoxys #386**.
-
-El catálogo está preparado con estructura bilingüe:
-
-```text
-name_es
-name_en
-search
-```
-
-En Pokémon Esmeralda, la mayoría de nombres oficiales de Pokémon de Generación 1, 2 y 3 son iguales en español e inglés.  
-Aun así, la estructura ya permite añadir diferencias de idioma, aliases y variantes comunes en futuras versiones.
-
-</details>
-
-<details>
-<summary><strong>Checklist de Hoenn</strong></summary>
-
-<br>
-
-Incluye una checklist de rutas y zonas de Hoenn para llevar el control de capturas durante la run.
-
-</details>
-
-<details>
-<summary><strong>Cementerio automático</strong></summary>
-
-<br>
-
-La app usa la **Caja 14 del PC** como cementerio automático.
-
-```text
-Caja 14 = Pokémon muertos
-```
-
-Cuando un Pokémon muere en la run, muévelo a la Caja 14 del PC y LockeWeb lo mostrará automáticamente en el cementerio.
-
-</details>
-
-<details>
-<summary><strong>Backup</strong></summary>
-
-<br>
-
-LockeWeb permite:
-
-- guardar progreso localmente en el navegador;
-- exportar backup JSON;
-- importar backup JSON.
-
-</details>
-
-</details>
+<img width="1886" height="558" alt="Backup" src="https://github.com/user-attachments/assets/11f7630c-f437-4ebe-af9e-a7cd6b9f075c" />
 
 ---
 
-<details open>
-<summary><strong>Instalación rápida</strong></summary>
+## Compatibilidad
 
-<br>
+| Juego | Estado |
+|---|---|
+| Pokémon Rubí | Soportado |
+| Pokémon Zafiro | Soportado |
+| Pokémon Esmeralda | Soportado |
+| Pokémon Rojo Fuego | Soportado |
+| Pokémon Verde Hoja | Soportado |
 
-<details open>
-<summary><strong>Requisitos</strong></summary>
-
-<br>
-
-Para usar LockeWeb Companion necesitas:
-
-- Windows;
-- Node.js instalado;
-- mGBA con soporte de scripting Lua;
-- una copia legal de Pokémon Esmeralda;
-- la ROM cargada en mGBA.
-
-Node.js solo hay que instalarlo una vez en el ordenador.
-
-</details>
-
-<details open>
-<summary><strong>1. Instalar Node.js</strong></summary>
-
-<br>
-
-Instala **Node.js LTS** desde su web oficial:
-
-```text
-https://nodejs.org/
-```
-
-Solo tienes que hacerlo una vez.
-
-Si ya tienes Node.js instalado, puedes saltar este paso.
-
-</details>
-
-<details open>
-<summary><strong>2. Descargar LockeWeb Companion</strong></summary>
-
-<br>
-
-Descarga el ZIP desde la sección **Releases** del repositorio.
-
-Última versión:
-
-```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
-```
-
-Archivo recomendado:
-
-```text
-LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix.zip
-```
-
-Extrae la carpeta en cualquier ubicación de tu ordenador.
-
-Ejemplo:
-
-```text
-Escritorio/LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix/
-```
-
-</details>
-
-<details open>
-<summary><strong>3. Abrir LockeWeb Companion</strong></summary>
-
-<br>
-
-Dentro de la carpeta extraída, ejecuta:
-
-```text
-abrir_lockeweb.bat
-```
-
-En condiciones normales, basta con doble clic.
-
-Si Windows bloquea permisos o la app no arranca correctamente, prueba:
-
-```text
-Clic derecho → Ejecutar como administrador
-```
-
-</details>
-
-</details>
+La versión 2.0 ha sido validada con lectura completa de equipo, mochila, ficha de entrenador, dinero, medallas, cementerio/Caja 14, checklist y datos manuales por perfil.
 
 ---
 
-<details open>
-<summary><strong>Uso con mGBA</strong></summary>
+## Instalación y uso
 
-<br>
+### Requisitos
 
-<details open>
-<summary><strong>1. Abrir el juego</strong></summary>
+- Windows 10/11.
+- Node.js instalado.
+- mGBA con soporte Lua.
+- ROM compatible de Pokémon GEN3.
+- Save funcional de la partida.
+- Navegador moderno: Chrome, Edge, Firefox o equivalente.
 
-<br>
+> PokeCompanion no incluye ROMs, BIOS, saves comerciales ni archivos oficiales de Pokémon. Debes usar tus propias copias legales.
 
-Abre Pokémon Esmeralda en mGBA y carga tu partida.
+### Pasos
 
-</details>
+1. Descarga la versión más reciente desde:
 
-<details open>
-<summary><strong>2. Cargar el script Lua</strong></summary>
+   [GitHub Releases](https://github.com/vngnzz/Lockeweb-Companion/releases)
 
-<br>
+2. Extrae el ZIP en una carpeta local.
 
-En mGBA, ve a:
+3. Abre una terminal en la carpeta del proyecto e instala dependencias:
 
-```text
-Tools → Scripting → Load Script
+```bash
+npm install
 ```
 
-Selecciona el archivo:
+4. Inicia el companion:
 
-```text
-lua/emerald_party_sender.lua
+```bash
+npm start
 ```
 
-</details>
-
-<details open>
-<summary><strong>3. Comprobar conexión</strong></summary>
-
-<br>
-
-Cuando todo esté funcionando correctamente, la web mostrará:
+5. Abre la web local indicada por la consola, normalmente:
 
 ```text
-Bridge conectado
+http://localhost:3000
 ```
 
-A partir de ese momento, LockeWeb empezará a recibir datos desde mGBA.
-
-</details>
-
-<details open>
-<summary><strong>Uso diario recomendado</strong></summary>
-
-<br>
-
-Después de tener Node.js instalado, el flujo normal es:
+6. Abre tu ROM en mGBA y carga el script Lua correspondiente:
 
 ```text
-1. Ejecutar abrir_lockeweb.bat.
-2. Abrir Pokémon Esmeralda en mGBA.
-3. Cargar lua/emerald_party_sender.lua.
-4. Jugar con LockeWeb abierto como segunda pantalla.
+lua/pokeconnect_ruby_sender.lua
+lua/pokeconnect_sapphire_sender.lua
+lua/pokeconnect_emerald_sender.lua
+lua/pokeconnect_firered_sender.lua
+lua/pokeconnect_leafgreen_sender.lua
 ```
 
-Mantén abierta la ventana negra de `abrir_lockeweb.bat` mientras juegas.
+Usa siempre el script dedicado del juego que estés ejecutando.
 
-Para cerrar LockeWeb:
+---
 
-```text
-CTRL + C
-```
+## Datos locales y perfiles
 
-y confirma con `S` si Windows lo pregunta.
+Desde v2.0, PokeCompanion separa los datos por juego para evitar contaminación entre perfiles.
 
-</details>
+Esto afecta a:
+
+- Checklist.
+- Encuentros.
+- Capturas.
+- Roster.
+- Últimos datos en vivo.
+- Capturas/manual snapshots.
+- Datos auxiliares de la run.
+
+---
+
+## Solución de problemas
+
+Si la web no recibe datos:
+
+- Comprueba que el servidor local esté arrancado.
+- Comprueba que mGBA tenga cargado el script Lua correcto.
+- Revisa que no estés usando el script de otro juego.
+- Mira la consola de mGBA por si aparece un error Lua.
+- Verifica que el puerto local no esté bloqueado.
+
+Si el cementerio no aparece:
+
+- Comprueba que los Pokémon estén en la **Caja 14** del PC del juego.
+
+Si la checklist muestra datos antiguos:
+
+- Puede quedar información legacy en el navegador si vienes de una versión anterior. Exporta tus datos si lo necesitas y limpia el perfil afectado.
+
+---
+
+## Open Source
+
+PokeCompanion GEN3 es un proyecto **Open Source**.
+
+Puedes revisar el código, modificarlo, adaptarlo a tus necesidades y proponer mejoras mediante issues o pull requests en GitHub.
+
+---
+
+## Créditos
+
+- Proyecto creado y mantenido por **vngnzz**.
+- Gracias a **mGBA** por el emulador y soporte Lua.
+- Gracias a **PokeAPI / sprites** por recursos y referencias visuales usadas por la comunidad.
+- Gracias a **Pokémon Showdown** por el formato de equipos que inspira la exportación compatible con Showdown / PokéPaste.
+- Gracias a la comunidad de investigación de Pokémon GEN3, save research, RAM mapping, decompilaciones y ROM hacking.
+
+---
+
+## Aviso legal
+
+PokeCompanion GEN3 es un proyecto fan-made y no oficial.
+
+No está afiliado, patrocinado ni aprobado por Nintendo, Game Freak, Creatures Inc., The Pokémon Company ni ninguna entidad propietaria de la marca Pokémon.
+
+Pokémon y todos los nombres, sprites, marcas y elementos relacionados pertenecen a sus respectivos propietarios.
+
+Este repositorio no incluye ROMs, BIOS, saves comerciales ni archivos oficiales de Pokémon.
 
 </details>
 
 ---
 
 <details>
-<summary><strong>Uso de la pestaña Showdown</strong></summary>
+<summary><strong>🇬🇧 README in English</strong></summary>
 
 <br>
 
-1. Abre LockeWeb Companion.
-2. Conecta mGBA cargando el script Lua.
-3. Espera a que el equipo se lea correctamente.
-4. Abre la pestaña `Showdown`.
-5. Revisa el texto generado automáticamente.
-6. Usa:
-   - `Copiar Showdown`;
-   - o `Descargar TXT`.
-7. Pega el resultado en Pokémon Showdown.
+<img width="1920" height="911" alt="PokeCompanion GEN3 banner" src="https://github.com/user-attachments/assets/8d920c62-5ebc-4aa8-864c-472cabbcd205" />
 
-El contenido de la pestaña se actualiza en vivo cuando cambia el equipo leído desde mGBA.
+## What is PokeCompanion GEN3?
 
-</details>
+**PokeCompanion GEN3** is a **local web companion app** for **third-generation Pokémon games**. It is designed especially for **Nuzlocke / LockeWeb** runs and works with **mGBA** through Lua scripts and a small local server.
+
+The app reads live game information and displays it in a web interface: party, Trainer Card, bag, cemetery, checklist, and tools to document the run.
+
+Development is still ongoing. **v2.0 — Hall of Fame** stabilizes the full GEN3 foundation, but new improvements, features, and adjustments will be added in future versions.
 
 ---
 
-<details>
-<summary><strong>Qué hace abrir_lockeweb.bat</strong></summary>
+## Project goal
 
-<br>
+PokeCompanion was created to turn a classic Nuzlocke run into a more visual, comfortable, and organized experience.
 
-`abrir_lockeweb.bat` es el único archivo necesario para iniciar LockeWeb Companion.
+Main goals:
 
-Hace automáticamente:
+- Display useful game information without modifying the ROM.
+- Avoid cheats, save editors, or invasive tools.
+- Help track encounters, captures, deaths, and progress.
+- Make the run easier to follow through a clear web interface.
+- Keep data separated per game profile.
+- Serve as an open foundation for future community improvements.
 
-```text
-1. Comprueba si Node.js está instalado.
-2. Comprueba si npm está disponible.
-3. Comprueba si faltan dependencias internas.
-4. Ejecuta npm install solo si hace falta.
-5. Abre el navegador.
-6. Arranca el servidor local.
-```
-
-Importante:
-
-```text
-El BAT no instala Node.js.
-```
-
-Node.js debe instalarse manualmente una sola vez desde su web oficial.
-
-### Corrección npm incluida
-
-La release pública no incluye `package-lock.json`, para evitar que npm use rutas internas de empaquetado.
-
-Además, se incluye un archivo `.npmrc` local:
-
-```text
-registry=https://registry.npmjs.org/
-audit=false
-fund=false
-```
-
-Y el BAT fuerza la instalación con el registry público oficial:
-
-```bat
-npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund
-```
-
-Si existe un `package-lock.json` antiguo con un registry interno incorrecto, el BAT lo detecta y lo elimina antes de instalar dependencias.
-
-</details>
+PokeCompanion is a **companion**, not a save editor.
 
 ---
 
-<details>
-<summary><strong>Estructura del proyecto</strong></summary>
+## Main features
 
-<br>
+### Run tracking
 
-```text
-LockeWeb-Companion/
-├─ public/
-│  ├─ index.html
-│  ├─ app.js
-│  ├─ styles.css
-│  ├─ manifest.webmanifest
-│  ├─ service-worker.js
-│  ├─ data/
-│  │  └─ pokemon_catalog_gen3.json
-│  └─ iconos web
-├─ lua/
-│  └─ emerald_party_sender.lua
-├─ server.js
-├─ package.json
-├─ .npmrc
-├─ abrir_lockeweb.bat
-├─ INICIO_RAPIDO_WINDOWS.md
-└─ README.md
-```
+Track manual run data: encounters, captures, routes, states, progress, and useful run information.
 
-</details>
+### Live Team
 
----
+Displays the current party read from mGBA, including Pokémon, nicknames, levels, HP, status, and relevant data.
 
-<details>
-<summary><strong>Problemas comunes</strong></summary>
+### Trainer Card
 
-<br>
+The Trainer Card displays name, ID, money, badges, Pokémon League state, and active game.
 
-<details>
-<summary><strong>La web abre, pero no muestra datos</strong></summary>
+<img width="338" height="424" alt="Trainer Card" src="https://github.com/user-attachments/assets/9c9bc5d5-fccf-4248-b0c5-c5d355b9b3c0" />
 
-<br>
+### Bag
 
-Revisa:
+Reads and displays the player's bag, including relevant items from the run.
 
-- que `abrir_lockeweb.bat` siga abierto;
-- que mGBA tenga cargado `lua/emerald_party_sender.lua`;
-- que la web muestre `Bridge conectado`;
-- que hayas cargado el script Lua de la carpeta correcta.
+<img width="345" height="567" alt="Bag" src="https://github.com/user-attachments/assets/496da4c5-672c-4fd7-abcc-0334cc87028a" />
 
-</details>
+### Nuzlocke Cemetery
 
-<details>
-<summary><strong>El BAT dice que falta Node.js</strong></summary>
+**Box 14** works as the cemetery. Pokémon placed there automatically appear in the death box section.
 
-<br>
+<img width="1902" height="477" alt="Cemetery" src="https://github.com/user-attachments/assets/aff5f030-a57c-46d7-bf7d-c1b1db7c5d64" />
 
-Instala Node.js LTS desde:
+### Checklist
 
-```text
-https://nodejs.org/
-```
+Includes a checklist to track encounters, captures, and manual progress per game.
 
-Luego cierra la ventana y vuelve a ejecutar:
+<img width="1920" height="911" alt="Checklist" src="https://github.com/user-attachments/assets/07c630ec-c321-4051-a267-7186e8ac71ff" />
 
-```text
-abrir_lockeweb.bat
-```
+### Pokémon Showdown export through PokéPaste
 
-</details>
+Generates a team export compatible with **Pokémon Showdown / PokéPaste**, avoiding the need to manually configure each Pokémon in Showdown.
 
-<details>
-<summary><strong>Aparece un error relacionado con ws, npm, node_modules o ETIMEDOUT</strong></summary>
+<img width="1886" height="718" alt="Pokémon Showdown / PokéPaste export" src="https://github.com/user-attachments/assets/517f7980-c9f8-48f9-b081-60656a28c1a6" />
 
-<br>
+### Backups and local data
 
-Usa una carpeta limpia y ejecuta:
+PokeCompanion stores local browser data and helps manage useful run information.
 
-```text
-abrir_lockeweb.bat
-```
-
-Si vienes de una versión anterior o has mezclado archivos, cierra LockeWeb y borra:
-
-```text
-node_modules/
-package-lock.json
-```
-
-Luego vuelve a ejecutar:
-
-```text
-abrir_lockeweb.bat
-```
-
-La app fuerza el registry público oficial de npm y evita el problema de URLs internas en `package-lock.json`.
-
-</details>
-
-<details>
-<summary><strong>La habilidad no coincide en RandomLocke</strong></summary>
-
-<br>
-
-Desde la v1.19.1, LockeWeb intenta resolver la habilidad real usando la ROM cargada.
-
-Si la ROM randomizada modifica estructuras internas de forma no estándar, puede que aún sea necesario ajustar el lector en futuras versiones.
-
-Si la habilidad no se puede detectar de forma segura, la app evita inventar una habilidad incorrecta.
-
-</details>
-
-<details>
-<summary><strong>El objeto equipado no coincide</strong></summary>
-
-<br>
-
-Desde la v1.19.2, LockeWeb usa una tabla local de objetos de Pokémon Emerald / Gen III para resolver objetos conocidos.
-
-Si un objeto concreto sigue apareciendo mal, conviene revisar el `heldItemId` mostrado/leído y añadir o corregir ese ID en la tabla local.
-
-La prioridad del exportador debe ser no exportar un objeto incorrecto.
-
-</details>
-
-<details>
-<summary><strong>Pokémon Showdown marca el equipo como ilegal</strong></summary>
-
-<br>
-
-En RandomLocke es normal que Pokémon Showdown pueda marcar movimientos, habilidades u objetos como ilegales en formatos competitivos estándar.
-
-La exportación está pensada para representar el equipo real de la partida.
-
-Para revisar el equipo sin reglas competitivas estrictas, usa un formato permisivo o utilízalo como texto de registro/visualización.
-
-</details>
-
-<details>
-<summary><strong>Windows bloquea el BAT</strong></summary>
-
-<br>
-
-Prueba:
-
-```text
-Clic derecho → Ejecutar como administrador
-```
-
-</details>
-
-</details>
+<img width="1886" height="558" alt="Backup" src="https://github.com/user-attachments/assets/11f7630c-f437-4ebe-af9e-a7cd6b9f075c" />
 
 ---
 
-<details>
-<summary><strong>Notas técnicas</strong></summary>
+## Compatibility
 
-<br>
+| Game | Status |
+|---|---|
+| Pokémon Ruby | Supported |
+| Pokémon Sapphire | Supported |
+| Pokémon Emerald | Supported |
+| Pokémon FireRed | Supported |
+| Pokémon LeafGreen | Supported |
 
-LockeWeb Companion funciona con esta arquitectura:
-
-```text
-mGBA
-└─ Script Lua
-   └─ TCP local
-      └─ Node.js local bridge
-         └─ Webapp en navegador
-```
-
-Todo funciona en local.
-
-No requiere servidor externo, cuenta de usuario ni conexión permanente a internet, salvo para instalar dependencias la primera vez y para algunos recursos externos si no están cacheados.
-
-### Datos ampliados para Showdown
-
-La v1.19 amplía el modelo de datos del Pokémon con información útil para exportación:
-
-```text
-heldItemId
-abilitySlot
-ability1Id
-ability2Id
-abilityId
-abilitySource
-nature
-ivs
-evs
-experience
-friendship
-ppBonuses
-```
-
-La v1.19.1 mejora la resolución de habilidad para RandomLocke consultando la información disponible de la ROM cargada.
-
-La v1.19.2 mejora la resolución de objetos equipados usando IDs internos de Pokémon Emerald / Gen III y una tabla local para exportación Showdown.
-
-</details>
+Version 2.0 has been validated with full reading of party, bag, Trainer Card, money, badges, cemetery/Box 14, checklist, and manual per-profile data.
 
 ---
 
-<details>
-<summary><strong>Seguridad y privacidad</strong></summary>
+## Installation and usage
 
-<br>
+### Requirements
 
-LockeWeb Companion:
+- Windows 10/11.
+- Node.js installed.
+- mGBA with Lua support.
+- Compatible Pokémon GEN3 ROM.
+- Working save file.
+- Modern browser: Chrome, Edge, Firefox, or equivalent.
 
-- funciona en local;
-- no sube tus datos a ningún servidor;
-- no requiere login;
-- guarda el progreso en el navegador;
-- permite exportar/importar backup JSON;
-- permite exportar el equipo actual en formato Pokémon Showdown.
+> PokeCompanion does not include ROMs, BIOS files, commercial saves, or official Pokémon files. Use your own legal copies.
 
-</details>
+### Steps
+
+1. Download the latest version from:
+
+   [GitHub Releases](https://github.com/vngnzz/Lockeweb-Companion/releases)
+
+2. Extract the ZIP into a local folder.
+
+3. Open a terminal in the project folder and install dependencies:
+
+```bash
+npm install
+```
+
+4. Start the companion:
+
+```bash
+npm start
+```
+
+5. Open the local web app shown in the console, usually:
+
+```text
+http://localhost:3000
+```
+
+6. Open your ROM in mGBA and load the matching Lua script:
+
+```text
+lua/pokeconnect_ruby_sender.lua
+lua/pokeconnect_sapphire_sender.lua
+lua/pokeconnect_emerald_sender.lua
+lua/pokeconnect_firered_sender.lua
+lua/pokeconnect_leafgreen_sender.lua
+```
+
+Always use the dedicated script for the game you are running.
 
 ---
 
-<details>
-<summary><strong>Qué NO incluye este proyecto</strong></summary>
+## Local data and profiles
 
-<br>
+Since v2.0, PokeCompanion separates data by game to prevent cross-profile contamination.
 
-Este proyecto no incluye:
+This applies to:
 
-- ROMs;
-- BIOS;
-- saves;
-- archivos oficiales de Pokémon;
-- assets propietarios del juego.
-
-Cada usuario debe usar sus propias copias legales.
-
-</details>
+- Checklist.
+- Encounters.
+- Captures.
+- Roster.
+- Latest live data.
+- Manual snapshots.
+- Auxiliary run data.
 
 ---
 
-<details>
-<summary><strong>Disclaimer</strong></summary>
+## Troubleshooting
 
-<br>
+If the web app is not receiving data:
 
-Este proyecto es una herramienta **fan-made no oficial**.
+- Check that the local server is running.
+- Check that mGBA has loaded the correct Lua script.
+- Make sure you are not using a script from another game.
+- Check the mGBA console for Lua errors.
+- Verify that the local port is not blocked.
 
-No está afiliado, asociado ni respaldado por Nintendo, Game Freak, Creatures Inc. ni The Pokémon Company.
+If the cemetery does not appear:
 
-Pokémon y sus marcas relacionadas pertenecen a sus respectivos propietarios.
+- Make sure the Pokémon are placed in **Box 14** in the in-game PC.
 
-El proyecto no incluye ROMs, BIOS ni archivos protegidos.
+If the checklist shows old data:
 
-</details>
-
----
-
-<details>
-<summary><strong>Licencia</strong></summary>
-
-<br>
-
-MIT.
-
-</details>
-
-</details>
+- Some legacy browser data may remain if you are upgrading from an older version. Export your data if needed and clear the affected profile.
 
 ---
 
-<details>
-<summary><strong>🇬🇧 README — English</strong></summary>
+## Open Source
 
-<br>
+PokeCompanion GEN3 is an **Open Source** project.
 
-<details open>
-<summary><strong>What is LockeWeb Companion?</strong></summary>
-
-<br>
-
-LockeWeb Companion is a local webapp designed to be used as a **second screen** while playing a **Pokémon Emerald RandomLocke/Nuzlocke** run in **mGBA**.
-
-It reads live information from mGBA through a Lua script and a small local Node.js bridge.
-
-The idea is simple: you play in mGBA, and LockeWeb shows your team, bag, trainer card, badges, graveyard, encounter checklist and an automatic **Pokémon Showdown** export in your browser.
-
-</details>
+You can review the code, modify it, adapt it to your needs, and propose improvements through GitHub issues or pull requests.
 
 ---
 
-<details open>
-<summary><strong>Current status</strong></summary>
+## Credits
 
-<br>
-
-**Latest stable version:** `v1.19.2 — ShowDown Update Item Fix`
-
-**Download latest release:**
-
-```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
-```
-
-This edition is designed to be easy to use:
-
-- integrated `Showdown` tab;
-- current party export in Pokémon Showdown format;
-- live-updating Showdown text from mGBA data;
-- button to copy the Showdown text;
-- button to download the `.txt`;
-- extended Pokémon data reading:
-  - held item;
-  - ability;
-  - nature;
-  - IVs;
-  - EVs;
-  - experience;
-  - friendship;
-  - PP bonuses;
-- specific ability fix for RandomLocke;
-- held item name fix using Pokémon Emerald / Gen III internal item IDs;
-- local Gen III item table for UI and Showdown export;
-- ability reading using the loaded ROM when available;
-- built-in Spanish/English language selector;
-- single `.bat` file;
-- automatic internal dependency installation if needed;
-- automatic browser launch;
-- local server included;
-- direct GitHub link inside the app;
-- public npm registry fix to avoid dependency installation errors on other PCs;
-- no `package-lock.json` with internal URLs;
-- local `.npmrc` file included to force `https://registry.npmjs.org/`;
-- `abrir_lockeweb.bat` installs dependencies using the official public npm registry;
-- no login;
-- no required external service;
-- no ROM or save modification.
-
-</details>
+- Created and maintained by **vngnzz**.
+- Thanks to **mGBA** for the emulator and Lua support.
+- Thanks to **PokeAPI / sprites** for community resources and visual references.
+- Thanks to **Pokémon Showdown** for the team format that inspires the Showdown / PokéPaste-compatible export.
+- Thanks to the Pokémon GEN3 research, save research, RAM mapping, decompilation, and ROM hacking communities.
 
 ---
 
-<details>
-<summary><strong>What it does</strong></summary>
+## Legal notice
 
-<br>
+PokeCompanion GEN3 is an unofficial fan-made project.
 
-<details>
-<summary><strong>Live team</strong></summary>
+It is not affiliated with, sponsored by, or endorsed by Nintendo, Game Freak, Creatures Inc., The Pokémon Company, or any entity that owns the Pokémon brand.
 
-<br>
+Pokémon and all related names, sprites, trademarks, and assets belong to their respective owners.
 
-LockeWeb automatically reads from mGBA memory:
-
-- current party Pokémon;
-- nickname;
-- real species;
-- sprite;
-- level;
-- current and maximum HP;
-- stats;
-- moves;
-- PP;
-- Pokémon status;
-- held item;
-- ability;
-- nature;
-- IVs;
-- EVs;
-- experience;
-- friendship;
-- PP bonuses.
-
-The **Live team** section is read-only.  
-It is not edited manually from the webapp.
-
-</details>
-
-<details>
-<summary><strong>Competitive data: IVs, EVs, nature, ability and held item</strong></summary>
-
-<br>
-
-Since v1.19, LockeWeb Companion extends Pokémon reading to prepare Pokémon Showdown-compatible export.
-
-The app displays:
-
-```text
-Nature
-Ability
-Held item
-EVs
-IVs
-```
-
-v1.19.1 specifically fixes ability resolution for RandomLocke.
-
-v1.19.2 fixes held item name resolution using Pokémon Emerald / Gen III internal item IDs.
-
-This avoids a correct `heldItemId` from memory being transformed into a wrong item name by using an incompatible external index.
-
-</details>
-
-<details>
-<summary><strong>RandomLocke ability fix</strong></summary>
-
-<br>
-
-In a normal ROM, a Pokémon ability can usually be resolved using:
-
-```text
-species + ability slot
-```
-
-However, in a RandomLocke, the randomizer may modify the ROM's internal ability table.
-
-Because of that, LockeWeb attempts to resolve the ability using:
-
-```text
-Pokémon in memory
-→ real ability slot
-→ gBaseStats table from the loaded ROM
-→ real abilityId
-→ ability name
-```
-
-If it cannot resolve the real ability from the ROM, it avoids inventing an incorrect ability.
-
-</details>
-
-<details>
-<summary><strong>Held item fix for Showdown</strong></summary>
-
-<br>
-
-v1.19.2 fixes held item resolution.
-
-The likely issue was:
-
-```text
-heldItemId read from memory = correct
-name assigned to heldItemId = incorrect
-```
-
-Pokémon Emerald / Gen III internal item IDs must not be treated as equivalent to external indexes from other sources.
-
-LockeWeb now uses a local Gen III item table as the main source:
-
-```text
-heldItemId read from memory
-→ local Gen III / Emerald table
-→ correct UI name
-→ correct English name for Showdown
-```
-
-Examples of covered IDs:
-
-```text
-191 → Soul Dew
-194 → Smoke Ball
-183 → Quick Claw
-197 → Lucky Egg
-200 → Leftovers
-186 → Choice Band
-187 → King's Rock
-179 → Bright Powder
-73  → Guard Spec.
-74  → Dire Hit
-75  → X Attack
-76  → X Defend
-```
-
-PokéAPI is no longer the main source for known Pokémon Emerald items.
-
-</details>
-
-<details>
-<summary><strong>Showdown tab</strong></summary>
-
-<br>
-
-v1.19 adds a new tab:
-
-```text
-Showdown
-```
-
-It is located next to the lower app sections, such as checklist, box/graveyard and backup.
-
-Inside the tab, the app automatically generates text compatible with the Pokémon Showdown importer.
-
-The text updates live using the current party read from mGBA.
-
-The tab allows you to:
-
-- view the team in Showdown format;
-- copy the text directly;
-- download it as `.txt`;
-- paste it into Pokémon Showdown.
-
-The exported format includes, when available:
-
-- species;
-- nickname;
-- held item;
-- ability;
-- level;
-- EVs;
-- nature;
-- IVs;
-- moves.
-
-Example format:
-
-```text
-CHARLIE (Arcanine) @ Smoke Ball
-Ability: Intimidate
-Level: 25
-EVs: 12 HP / 8 Atk / 4 Def
-Adamant Nature
-IVs: 31 HP / 28 Atk / 30 Def / 15 SpA / 25 SpD / 20 Spe
-- Bite
-- Flamethrower
-- Roar
-- Odor Sleuth
-```
-
-In RandomLocke, Pokémon Showdown may flag some moves, abilities or items as illegal in standard competitive formats.  
-The export is mainly intended to record, visualize or import the team as it exists in the save.
-
-</details>
-
-<details>
-<summary><strong>Language selector</strong></summary>
-
-<br>
-
-The app includes a language selector in the top-right area:
-
-```text
-🇪🇸 ES
-🇬🇧 EN
-```
-
-The selected language is saved locally in the browser using `localStorage`.
-
-The interface can be displayed in:
-
-- Spanish;
-- English.
-
-The following elements are also adapted per language:
-
-- UI texts;
-- capture statuses;
-- team/box statuses;
-- filters;
-- Pokémon types;
-- stats;
-- move and item names when available.
-
-</details>
-
-<details>
-<summary><strong>Trainer card</strong></summary>
-
-<br>
-
-Automatically displays:
-
-- trainer name;
-- ID;
-- money;
-- badges.
-
-</details>
-
-<details>
-<summary><strong>Bag</strong></summary>
-
-<br>
-
-Reads the bag from mGBA and organizes it by pockets:
-
-- Items;
-- Key Items;
-- Poké Balls;
-- TM/HM;
-- Berries.
-
-Since v1.19.2, known item names are prioritized from the local Pokémon Emerald / Gen III table.
-
-</details>
-
-<details>
-<summary><strong>Quick capture registration</strong></summary>
-
-<br>
-
-Lets you quickly update the run checklist.
-
-You can register:
-
-- route or location;
-- capture status;
-- captured Pokémon;
-- nickname;
-- level;
-- notes.
-
-Available statuses:
-
-- Caught;
-- Missed;
-- Dupe / Species;
-- Gift;
-- Static;
-- Skipped.
-
-It also includes an option to fill capture data from a current live team Pokémon.
-
-</details>
-
-<details>
-<summary><strong>Pokémon search</strong></summary>
-
-<br>
-
-Includes typo-tolerant Pokémon search.
-
-Example:
-
-```text
-chimchou
-```
-
-can find:
-
-```text
-Chinchou
-```
-
-The local catalog includes Pokémon from:
-
-- Generation 1;
-- Generation 2;
-- Generation 3.
-
-Up to **Deoxys #386**.
-
-The catalog is prepared with bilingual structure:
-
-```text
-name_es
-name_en
-search
-```
-
-In Pokémon Emerald, most official Generation 1, 2 and 3 Pokémon species names are the same in Spanish and English.  
-Even so, the structure already supports future language differences, aliases and common variants.
-
-</details>
-
-<details>
-<summary><strong>Hoenn checklist</strong></summary>
-
-<br>
-
-Includes a checklist of Hoenn routes and locations to track captures during the run.
-
-</details>
-
-<details>
-<summary><strong>Automatic graveyard</strong></summary>
-
-<br>
-
-The app uses **PC Box 14** as the automatic graveyard.
-
-```text
-Box 14 = dead Pokémon
-```
-
-When a Pokémon dies in the run, move it to PC Box 14 and LockeWeb will automatically show it in the graveyard section.
-
-</details>
-
-<details>
-<summary><strong>Backup</strong></summary>
-
-<br>
-
-LockeWeb allows you to:
-
-- save progress locally in the browser;
-- export JSON backup;
-- import JSON backup.
-
-</details>
-
-</details>
-
----
-
-<details open>
-<summary><strong>Quick setup</strong></summary>
-
-<br>
-
-<details open>
-<summary><strong>Requirements</strong></summary>
-
-<br>
-
-To use LockeWeb Companion you need:
-
-- Windows;
-- Node.js installed;
-- mGBA with Lua scripting support;
-- a legal copy of Pokémon Emerald;
-- the ROM loaded in mGBA.
-
-Node.js only needs to be installed once on the computer.
-
-</details>
-
-<details open>
-<summary><strong>1. Install Node.js</strong></summary>
-
-<br>
-
-Install **Node.js LTS** from the official website:
-
-```text
-https://nodejs.org/
-```
-
-You only need to do this once.
-
-If Node.js is already installed, you can skip this step.
-
-</details>
-
-<details open>
-<summary><strong>2. Download LockeWeb Companion</strong></summary>
-
-<br>
-
-Download the ZIP from the repository **Releases** section.
-
-Latest release:
-
-```text
-https://github.com/vngnzz/Lockeweb-Companion/releases/tag/1.19.2
-```
-
-Recommended file:
-
-```text
-LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix.zip
-```
-
-Extract the folder anywhere on your computer.
-
-Example:
-
-```text
-Desktop/LockeWeb-Companion-v1.19.2-ShowDown-Update-Item-Fix/
-```
-
-</details>
-
-<details open>
-<summary><strong>3. Open LockeWeb Companion</strong></summary>
-
-<br>
-
-Inside the extracted folder, run:
-
-```text
-abrir_lockeweb.bat
-```
-
-Normally, a double click is enough.
-
-If Windows blocks permissions or the app does not start correctly, try:
-
-```text
-Right click → Run as administrator
-```
-
-</details>
-
-</details>
-
----
-
-<details open>
-<summary><strong>Usage with mGBA</strong></summary>
-
-<br>
-
-<details open>
-<summary><strong>1. Open the game</strong></summary>
-
-<br>
-
-Open Pokémon Emerald in mGBA and load your save.
-
-</details>
-
-<details open>
-<summary><strong>2. Load the Lua script</strong></summary>
-
-<br>
-
-In mGBA, go to:
-
-```text
-Tools → Scripting → Load Script
-```
-
-Select the file:
-
-```text
-lua/emerald_party_sender.lua
-```
-
-</details>
-
-<details open>
-<summary><strong>3. Check connection</strong></summary>
-
-<br>
-
-When everything is working correctly, the webapp will show:
-
-```text
-Bridge connected
-```
-
-From that moment, LockeWeb will start receiving data from mGBA.
-
-</details>
-
-<details open>
-<summary><strong>Recommended daily usage</strong></summary>
-
-<br>
-
-After Node.js is installed, the normal flow is:
-
-```text
-1. Run abrir_lockeweb.bat.
-2. Open Pokémon Emerald in mGBA.
-3. Load lua/emerald_party_sender.lua.
-4. Play with LockeWeb open as a second screen.
-```
-
-Keep the black `abrir_lockeweb.bat` window open while playing.
-
-To close LockeWeb:
-
-```text
-CTRL + C
-```
-
-and confirm with `Y` if Windows asks.
-
-</details>
-
-</details>
-
----
-
-<details>
-<summary><strong>Using the Showdown tab</strong></summary>
-
-<br>
-
-1. Open LockeWeb Companion.
-2. Connect mGBA by loading the Lua script.
-3. Wait until the team is read correctly.
-4. Open the `Showdown` tab.
-5. Review the automatically generated text.
-6. Use:
-   - `Copy Showdown`;
-   - or `Download TXT`.
-7. Paste the result into Pokémon Showdown.
-
-The tab content updates live whenever the party read from mGBA changes.
-
-</details>
-
----
-
-<details>
-<summary><strong>What abrir_lockeweb.bat does</strong></summary>
-
-<br>
-
-`abrir_lockeweb.bat` is the only file needed to start LockeWeb Companion.
-
-It automatically:
-
-```text
-1. Checks if Node.js is installed.
-2. Checks if npm is available.
-3. Checks if internal dependencies are missing.
-4. Runs npm install only if needed.
-5. Opens the browser.
-6. Starts the local server.
-```
-
-Important:
-
-```text
-The BAT does not install Node.js.
-```
-
-Node.js must be installed manually once from the official website.
-
-### Included npm fix
-
-The public release does not include `package-lock.json`, so npm does not use internal packaging registry URLs.
-
-A local `.npmrc` file is also included:
-
-```text
-registry=https://registry.npmjs.org/
-audit=false
-fund=false
-```
-
-And the BAT forces dependency installation through the official public registry:
-
-```bat
-npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund
-```
-
-If an old `package-lock.json` exists with a wrong internal registry, the BAT detects it and deletes it before installing dependencies.
-
-</details>
-
----
-
-<details>
-<summary><strong>Project structure</strong></summary>
-
-<br>
-
-```text
-LockeWeb-Companion/
-├─ public/
-│  ├─ index.html
-│  ├─ app.js
-│  ├─ styles.css
-│  ├─ manifest.webmanifest
-│  ├─ service-worker.js
-│  ├─ data/
-│  │  └─ pokemon_catalog_gen3.json
-│  └─ web icons
-├─ lua/
-│  └─ emerald_party_sender.lua
-├─ server.js
-├─ package.json
-├─ .npmrc
-├─ abrir_lockeweb.bat
-├─ INICIO_RAPIDO_WINDOWS.md
-└─ README.md
-```
-
-</details>
-
----
-
-<details>
-<summary><strong>Common problems</strong></summary>
-
-<br>
-
-<details>
-<summary><strong>The webapp opens, but does not show data</strong></summary>
-
-<br>
-
-Check:
-
-- that `abrir_lockeweb.bat` is still open;
-- that mGBA has loaded `lua/emerald_party_sender.lua`;
-- that the webapp shows `Bridge connected`;
-- that you loaded the Lua script from the correct folder.
-
-</details>
-
-<details>
-<summary><strong>The BAT says Node.js is missing</strong></summary>
-
-<br>
-
-Install Node.js LTS from:
-
-```text
-https://nodejs.org/
-```
-
-Then close the window and run again:
-
-```text
-abrir_lockeweb.bat
-```
-
-</details>
-
-<details>
-<summary><strong>An error appears related to ws, npm, node_modules or ETIMEDOUT</strong></summary>
-
-<br>
-
-Use a clean folder and run:
-
-```text
-abrir_lockeweb.bat
-```
-
-If you came from an older version or mixed files, close LockeWeb and delete:
-
-```text
-node_modules/
-package-lock.json
-```
-
-Then run again:
-
-```text
-abrir_lockeweb.bat
-```
-
-The app forces the official public npm registry and avoids the internal `package-lock.json` URL issue.
-
-</details>
-
-<details>
-<summary><strong>The ability does not match in RandomLocke</strong></summary>
-
-<br>
-
-Since v1.19.1, LockeWeb attempts to resolve the real ability using the loaded ROM.
-
-If the randomized ROM modifies internal structures in a non-standard way, the reader may still require additional adjustments in future versions.
-
-If the ability cannot be detected safely, the app avoids inventing an incorrect ability.
-
-</details>
-
-<details>
-<summary><strong>The held item does not match</strong></summary>
-
-<br>
-
-Since v1.19.2, LockeWeb uses a local Pokémon Emerald / Gen III item table for known items.
-
-If a specific item still appears wrong, check the displayed/read `heldItemId` and add or correct that ID in the local table.
-
-The exporter priority should be to avoid exporting an incorrect item.
-
-</details>
-
-<details>
-<summary><strong>Pokémon Showdown marks the team as illegal</strong></summary>
-
-<br>
-
-In RandomLocke, Pokémon Showdown may flag moves, abilities or items as illegal in standard competitive formats.
-
-The export is intended to represent the real party from the save.
-
-To review the team without strict competitive rules, use a permissive format or use the export as a registration/visualization text.
-
-</details>
-
-<details>
-<summary><strong>Windows blocks the BAT</strong></summary>
-
-<br>
-
-Try:
-
-```text
-Right click → Run as administrator
-```
-
-</details>
-
-</details>
-
----
-
-<details>
-<summary><strong>Technical notes</strong></summary>
-
-<br>
-
-LockeWeb Companion works with this architecture:
-
-```text
-mGBA
-└─ Lua Script
-   └─ Local TCP
-      └─ Node.js local bridge
-         └─ Browser webapp
-```
-
-Everything runs locally.
-
-It does not require an external server, user account or permanent internet connection, except for first dependency installation and some external resources if they are not cached yet.
-
-### Extended data for Showdown
-
-v1.19 extends the Pokémon data model with useful export information:
-
-```text
-heldItemId
-abilitySlot
-ability1Id
-ability2Id
-abilityId
-abilitySource
-nature
-ivs
-evs
-experience
-friendship
-ppBonuses
-```
-
-v1.19.1 improves ability resolution for RandomLocke by reading available information from the loaded ROM.
-
-v1.19.2 improves held item resolution using Pokémon Emerald / Gen III internal IDs and a local table for Showdown export.
-
-</details>
-
----
-
-<details>
-<summary><strong>Security and privacy</strong></summary>
-
-<br>
-
-LockeWeb Companion:
-
-- runs locally;
-- does not upload your data to any server;
-- does not require login;
-- stores progress in the browser;
-- allows JSON backup export/import;
-- allows current party export in Pokémon Showdown format.
-
-</details>
-
----
-
-<details>
-<summary><strong>What this project does NOT include</strong></summary>
-
-<br>
-
-This project does not include:
-
-- ROMs;
-- BIOS files;
-- saves;
-- official Pokémon files;
-- proprietary game assets.
-
-Each user must use their own legal copies.
-
-</details>
-
----
-
-<details>
-<summary><strong>Disclaimer</strong></summary>
-
-<br>
-
-This project is an **unofficial fan-made tool**.
-
-It is not affiliated with, associated with, or endorsed by Nintendo, Game Freak, Creatures Inc. or The Pokémon Company.
-
-Pokémon and related trademarks belong to their respective owners.
-
-This project does not include ROMs, BIOS files or protected files.
-
-</details>
-
----
-
-<details>
-<summary><strong>License</strong></summary>
-
-<br>
-
-MIT.
-
-</details>
+This repository does not include ROMs, BIOS files, commercial saves, or official Pokémon files.
 
 </details>
