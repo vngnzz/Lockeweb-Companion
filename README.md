@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases"><strong>Download latest releases / Descargar últimas versiones</strong></a>
+  <a href="https://github.com/vngnzz/Lockeweb-Companion/releases/tag/2.0"><strong>Download v2.0 — Hall of Fame / Descargar v2.0 — Hall of Fame</strong></a>
 </p>
 
 ---
@@ -244,7 +244,7 @@ La versión 2.0 ha sido validada con lectura completa de equipo, mochila, ficha 
 
 1. Descarga la última versión desde:
 
-   [GitHub Releases](https://github.com/vngnzz/Lockeweb-Companion/releases)
+   [PokeCompanion GEN3 v2.0 — Hall of Fame](https://github.com/vngnzz/Lockeweb-Companion/releases/tag/2.0)
 
 2. Extrae el ZIP en una carpeta local.
 
@@ -606,7 +606,7 @@ Version 2.0 has been validated with full reading of party, bag, Trainer Card, mo
 
 1. Download the latest version from:
 
-   [GitHub Releases](https://github.com/vngnzz/Lockeweb-Companion/releases)
+   [PokeCompanion GEN3 v2.0 — Hall of Fame](https://github.com/vngnzz/Lockeweb-Companion/releases/tag/2.0)
 
 2. Extract the ZIP into a local folder.
 
